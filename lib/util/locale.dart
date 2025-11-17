@@ -27,6 +27,13 @@ class LocaleString extends Translations {
           'sender_telephone': 'Sender Telephone',
           'receiver_telephone': 'Receiver Telephone',
           'continue': 'CONTINUE',
+          // For Sign In Screen
+          'password': 'Password',
+          'sign_in': 'Sign In',
+          // For Setting Screen
+          'choose_printer': 'Choose Printer',
+          'no_device_connect': 'No Device Connected',
+          'print_test': 'Print Test',
         },
         'km_KH': {
           //for Menu Screen
@@ -51,6 +58,13 @@ class LocaleString extends Translations {
           'sender_telephone': 'លេខអ្នកផ្ញើ',
           'receiver_telephone': 'លេខអ្នកទទួល',
           'continue': 'បន្ត',
+          // For Sign In Screen
+          'password': 'ពាក្យសម្ងាត់',
+          'sign_in': 'ចូលគណនី',
+          // For Setting Screen
+          'choose_printer': 'ជ្រើសរើស Printer',
+          'no_device_connect': 'គ្មានឧបករណ៍ភ្ជាប់',
+          'print_test': 'ព្រីនតេស្ត',
         },
       };
 }

@@ -1,8 +1,12 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kh_logistics_internal_demo/activity/destination_screen.dart';
 import 'package:kh_logistics_internal_demo/activity/goods_transfer/goods_information.dart';
 import 'package:kh_logistics_internal_demo/activity/goods_transfer/goods_transfer_history.dart';
 import 'package:kh_logistics_internal_demo/util/app_color.dart';
+import 'package:kh_logistics_internal_demo/util/value_statics.dart';
 
 class GoodsTransfer extends StatefulWidget {
   const GoodsTransfer({super.key});
@@ -12,6 +16,10 @@ class GoodsTransfer extends StatefulWidget {
 }
 
 class _GoodsTransferState extends State<GoodsTransfer> {
+  TextEditingController senderController = TextEditingController();
+  TextEditingController receiverController = TextEditingController();
+  bool isSender = false;
+  bool isReceiver = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,7 +83,19 @@ class _GoodsTransferState extends State<GoodsTransfer> {
               ),
             ),
             InkWell(
-              onTap: () {},
+              onTap: () async {
+                final result = await Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => DestinationScreen(
+                            destinationType: 1,
+                            destinationTitle: 'Destination From',
+                          )),
+                );
+                if (result != null) {
+                  setState(() {});
+                }
+              },
               child: Container(
                 height: 40,
                 width: double.infinity,
@@ -92,7 +112,9 @@ class _GoodsTransferState extends State<GoodsTransfer> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('please_select'.tr),
+                      Text(ValueStatics.destinationFromTitle.isEmpty
+                          ? 'please_select'.tr
+                          : ValueStatics.destinationFromTitle),
                       Icon(
                         Icons.arrow_forward_ios,
                         size: 15,
@@ -117,7 +139,27 @@ class _GoodsTransferState extends State<GoodsTransfer> {
               ),
             ),
             InkWell(
-              onTap: () {},
+              onTap: () async {
+                if (ValueStatics.destinationFromTitle.isEmpty) {
+                  errorDialog(context, 'infor',
+                      'Please select destination from first!');
+                } else {
+                  final result = await Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => DestinationScreen(
+                              destinationType: 2,
+                              destinationTitle: 'Destination To',
+                            )),
+                  );
+                  if (result != null) {
+                    setState(() {});
+                  }
+                }
+
+                // DestinationScreen(
+                //     destinationTitle: "Destination To", destinationType: 2);
+              },
               child: Container(
                 height: 40,
                 width: double.infinity,
@@ -134,7 +176,9 @@ class _GoodsTransferState extends State<GoodsTransfer> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('please_select'.tr),
+                      Text(ValueStatics.destinationToTitle.isEmpty
+                          ? 'please_select'.tr
+                          : ValueStatics.destinationToTitle),
                       Icon(
                         Icons.arrow_forward_ios,
                         size: 15,
@@ -164,6 +208,8 @@ class _GoodsTransferState extends State<GoodsTransfer> {
                 height: 40,
                 width: double.infinity,
                 child: TextField(
+                  keyboardType: TextInputType.phone,
+                  controller: senderController,
                   cursorColor: AppColor.baseColors,
                   textAlignVertical: TextAlignVertical.center,
                   decoration: InputDecoration(
@@ -183,6 +229,13 @@ class _GoodsTransferState extends State<GoodsTransfer> {
                       borderRadius: BorderRadius.circular(5),
                     ),
                   ),
+                  onChanged: (value) {
+                    final isValidPhone =
+                        RegExp(r'^0[0-9]{8,10}$').hasMatch(value);
+                    setState(() {
+                      isSender = isValidPhone;
+                    });
+                  },
                 ),
               ),
             ),
@@ -205,6 +258,8 @@ class _GoodsTransferState extends State<GoodsTransfer> {
                 height: 40,
                 width: double.infinity,
                 child: TextField(
+                  keyboardType: TextInputType.phone,
+                  controller: receiverController,
                   cursorColor: AppColor.baseColors,
                   textAlignVertical: TextAlignVertical.center,
                   decoration: InputDecoration(
@@ -224,6 +279,13 @@ class _GoodsTransferState extends State<GoodsTransfer> {
                       borderRadius: BorderRadius.circular(5),
                     ),
                   ),
+                  onChanged: (value) {
+                    final isValidPhone =
+                        RegExp(r'^0[0-9]{8,10}$').hasMatch(value);
+                    setState(() {
+                      isReceiver = isValidPhone;
+                    });
+                  },
                 ),
               ),
             ),
@@ -232,11 +294,51 @@ class _GoodsTransferState extends State<GoodsTransfer> {
                 alignment: Alignment.center,
                 child: InkWell(
                   onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => GoodsInformation()),
-                    );
+                    if (ValueStatics.destinationFromTitle.isEmpty ||
+                        ValueStatics.destinationToTitle.isEmpty) {
+                      if (ValueStatics.destinationFromTitle.isEmpty) {
+                        errorDialog(
+                            context, 'infor', 'please select destination from');
+                      } else {
+                        errorDialog(
+                            context, 'infor', 'please select destination to');
+                      }
+                    } else {
+                      if (senderController.text.isEmpty ||
+                          receiverController.text.isEmpty) {
+                        if (senderController.text.isEmpty &&
+                            receiverController.text.isEmpty) {
+                          errorDialog(
+                              context, 'infor', 'please input sender number');
+                        } else if (senderController.text.isEmpty) {
+                          errorDialog(
+                              context, 'infor', 'please input sender number');
+                        } else if (receiverController.text.isEmpty) {
+                          errorDialog(
+                              context, 'infor', 'please input receiver number');
+                        }
+                      } else {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => GoodsInformation()),
+                        ).then((value) {
+                          setState(() {
+                            senderController.clear();
+                            receiverController.clear();
+                            ValueStatics.destinationToTitle = '';
+                            ValueStatics.destinationFromTitle = '';
+                            ValueStatics.destinationFromId = 0;
+                          });
+                        });
+                        // if (result != null) {
+                        //   log('hellow');
+
+                        // }
+                      }
+                    }
+
+                    log('sender is : ${isSender}. receiver is : ${isReceiver}');
                   },
                   child: Container(
                     height: 40,
@@ -259,5 +361,37 @@ class _GoodsTransferState extends State<GoodsTransfer> {
         ),
       ),
     );
+  }
+
+  void errorDialog(BuildContext context, String title, String content) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text(title),
+          content: Text(content),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context); // close dialog
+              },
+              child: Text("OK"),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    ValueStatics.destinationFromId = 0;
+    ValueStatics.destinationFromTitle = '';
+    ValueStatics.destinationToTitle = '';
+    senderController.dispose();
+    receiverController.dispose();
+
+    super.dispose();
   }
 }

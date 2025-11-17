@@ -2,18 +2,14 @@ import 'package:kh_logistics_internal_demo/util/constrain.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Preference {
-  // pref for token
-  // Future<void> setToken(SharedPreferences prefs, String token) async {
-  //   await prefs.setString(Constrain.TOKEN, token);
-  // }
+  
+  Future<void> setToken(SharedPreferences prefs, String token) async {
+    await prefs.setString(Constrain.TOKEN, token);
+  }
 
-  // Future<String?> getToken(SharedPreferences prefs) async {
-  //   return prefs.getString(Constrain.TOKEN).toString();
-  // }
-
-  // Future<void> clearToken(SharedPreferences prefs) async {
-  //   await prefs.remove(Constrain.TOKEN);
-  // }
+  Future<void> clearToken(SharedPreferences prefs) async {
+    await prefs.remove(Constrain.TOKEN);
+  }
 
   // pref for language
   Future<void> setLanguage(SharedPreferences prefs, String language) async {

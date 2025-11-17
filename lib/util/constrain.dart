@@ -3,11 +3,9 @@
 class Constrain {
   static String TOKEN = 'token';
   static String REFRESHTOKEN = 'refresh_token';
-  static String LOGIN = 'login';
   static String LANGUAGE = 'language';
-  static String ISPAYMENTSUCCESS = 'payment';
 
   // for type of language
-  static String KHMER = 'kh';
+  static String KHMER = 'km';
   static String ENGLISH = 'en';
 }

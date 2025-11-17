@@ -6,8 +6,8 @@ import 'package:kh_logistics_internal_demo/activity/move_item_from_van/move_item
 import 'package:kh_logistics_internal_demo/activity/move_item_to_van/move_item_to_van.dart';
 import 'package:kh_logistics_internal_demo/activity/reports/reports.dart';
 import 'package:kh_logistics_internal_demo/activity/user_setting/change_language.dart';
-import 'package:kh_logistics_internal_demo/activity/user_setting/log_out.dart';
 import 'package:kh_logistics_internal_demo/activity/user_setting/setting.dart';
+import 'package:kh_logistics_internal_demo/api/auth.dart';
 import 'package:kh_logistics_internal_demo/util/app_color.dart';
 import 'package:kh_logistics_internal_demo/util/app_version.dart';
 
@@ -116,8 +116,38 @@ class _MenuScreenState extends State<MenuScreen> {
                   style: TextStyle(color: AppColor.baseColors),
                 ),
                 onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => LogOut()));
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        backgroundColor: AppColor.background_color,
+                        title: Text('logout'),
+                        content: Text('do_you_want_to_logout'.tr),
+                        actions: <Widget>[
+                          TextButton(
+                            onPressed: () {
+                              Navigator.of(context).pop(); // close dialog
+                            },
+                            child: const Text(
+                              'Cancel',
+                              style: TextStyle(color: AppColor.baseColors),
+                            ),
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              // Navigator.of(context).pop(); // close the dialog
+                              // Call logout function
+                              Auth().logout(context);
+                            },
+                            child: const Text(
+                              'OK',
+                              style: TextStyle(color: AppColor.baseColors),
+                            ),
+                          ),
+                        ],
+                      );
+                    },
+                  );
                 },
               ),
             ),
@@ -219,7 +249,7 @@ class _MenuScreenState extends State<MenuScreen> {
             color: Colors.grey.withOpacity(0.3),
             spreadRadius: 0.8,
             blurRadius: 1,
-            offset: Offset(0, 1),
+            offset: Offset(1, 1),
           ),
         ],
       ),

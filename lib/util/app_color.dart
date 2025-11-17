@@ -4,7 +4,7 @@ class AppColor {
   // static String baseColor = '0xFF044503';
   // static String textColor = '0xFFffffff';
   static const MaterialColor baseColors =
-      MaterialColor(0xFFf8931f, <int, Color>{50: Color(0xFFf8931f)});
+      MaterialColor(0xFF005908, <int, Color>{50: Color(0xFF005908)});
   static const MaterialColor whiteTextColor =
       MaterialColor(0xFFFFFFFF, <int, Color>{50: Color(0xFFFFFFFF)});
   static const MaterialColor blackTextColor =
