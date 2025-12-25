@@ -8,18 +8,27 @@ import 'package:kh_logistics_internal_demo/activity/goods_transfer/goods_transfe
 import 'package:kh_logistics_internal_demo/util/app_color.dart';
 import 'package:kh_logistics_internal_demo/util/value_statics.dart';
 
-class GoodsTransfer extends StatefulWidget {
-  const GoodsTransfer({super.key});
+class GoodsTransferScreen extends StatefulWidget {
+  const GoodsTransferScreen({super.key});
 
   @override
-  State<GoodsTransfer> createState() => _GoodsTransferState();
+  State<GoodsTransferScreen> createState() => _GoodsTransferState();
 }
 
-class _GoodsTransferState extends State<GoodsTransfer> {
+class _GoodsTransferState extends State<GoodsTransferScreen> {
   TextEditingController senderController = TextEditingController();
   TextEditingController receiverController = TextEditingController();
   bool isSender = false;
   bool isReceiver = false;
+  bool? firstDigitSender;
+  bool? firstDigitReceiver;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,6 +55,16 @@ class _GoodsTransferState extends State<GoodsTransfer> {
             padding: const EdgeInsets.only(right: 20),
             child: TextButton(
                 onPressed: () {
+                  // ValueStatics.destinationFromTitle = '';
+                  // ValueStatics.destinationToTitle = '';
+                  // ValueStatics.destinationFromId = 0;
+                  // ValueStatics.destinationToId = 0;
+                  // print('Values after clear:');
+                  // print('FromTitle: ${ValueStatics.destinationFromTitle}');
+                  // print('ToTitle: ${ValueStatics.destinationToTitle}');
+                  // print('FromId: ${ValueStatics.destinationFromId}');
+                  // print('ToId: ${ValueStatics.destinationToId}');
+                  // setState(() {});
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -231,13 +250,30 @@ class _GoodsTransferState extends State<GoodsTransfer> {
                   ),
                   onChanged: (value) {
                     final isValidPhone =
-                        RegExp(r'^0[0-9]{8,10}$').hasMatch(value);
+                        RegExp(r'^0[0-9]{7,9}$').hasMatch(value);
+                    if (int.parse(senderController.text[0]) != 0) {
+                      errorDialog(
+                          context, 'error', 'first digit must be number 0');
+                    }
                     setState(() {
                       isSender = isValidPhone;
+                      ValueStatics.senderTelephone = value;
                     });
                   },
                 ),
               ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                if (senderController.text.isNotEmpty &&
+                        senderController.text.length < 8 ||
+                    senderController.text.length > 10 &&
+                        senderController.text.isNotEmpty)
+                  senderController.text.length < 8
+                      ? Text("sender number lower than 8 digit.")
+                      : Text("sender number higher than 10 digit."),
+              ],
             ),
             Padding(
               padding: const EdgeInsets.only(top: 15),
@@ -281,13 +317,32 @@ class _GoodsTransferState extends State<GoodsTransfer> {
                   ),
                   onChanged: (value) {
                     final isValidPhone =
-                        RegExp(r'^0[0-9]{8,10}$').hasMatch(value);
+                        RegExp(r'^0[0-9]{7,9}$').hasMatch(value);
+                    if (int.parse(receiverController.text[0]) != 0) {
+                      errorDialog(
+                          context, 'error', 'first digit must be number 0');
+                      receiverController.clear();
+                    }
                     setState(() {
                       isReceiver = isValidPhone;
+                      // log('reseiver is = ${isReceiver}');
+                      ValueStatics.receiverTelephone = value;
                     });
                   },
                 ),
               ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                if (receiverController.text.isNotEmpty &&
+                        receiverController.text.length < 8 ||
+                    receiverController.text.length > 10 &&
+                        receiverController.text.isNotEmpty)
+                  receiverController.text.length < 8
+                      ? Text("sender number lower than 8 digit.")
+                      : Text("sender number higher than 10 digit."),
+              ],
             ),
             Spacer(),
             Align(
@@ -318,19 +373,36 @@ class _GoodsTransferState extends State<GoodsTransfer> {
                               context, 'infor', 'please input receiver number');
                         }
                       } else {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => GoodsInformation()),
-                        ).then((value) {
-                          setState(() {
-                            senderController.clear();
-                            receiverController.clear();
-                            ValueStatics.destinationToTitle = '';
-                            ValueStatics.destinationFromTitle = '';
-                            ValueStatics.destinationFromId = 0;
-                          });
-                        });
+                        if (isSender == false || isReceiver == false) {
+                          if (isSender == false) {
+                            errorDialog(context, 'infor',
+                                'sender number phone is wrong!');
+                          } else {
+                            errorDialog(context, 'infor',
+                                'receiver number phone is wrong!');
+                          }
+                        } else {
+                          log('destination from id : ${ValueStatics.destinationFromId}');
+                          log('destination to id : ${ValueStatics.destinationToId}');
+                          log('sender phone : ${ValueStatics.senderTelephone}');
+                          log('receiver phone : ${ValueStatics.receiverTelephone}');
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => GoodsInformation()),
+                          );
+
+                          // .then((value) {
+                          //   setState(() {
+                          //     // senderController.clear();
+                          //     // receiverController.clear();
+                          //     // ValueStatics.destinationToTitle = '';
+                          //     // ValueStatics.destinationFromTitle = '';
+                          //     // ValueStatics.destinationFromId = 0;
+                          //   });
+                          // });
+                        }
+
                         // if (result != null) {
                         //   log('hellow');
 
@@ -368,6 +440,7 @@ class _GoodsTransferState extends State<GoodsTransfer> {
       context: context,
       builder: (context) {
         return AlertDialog(
+          backgroundColor: AppColor.background_color,
           title: Text(title),
           content: Text(content),
           actions: [
@@ -375,7 +448,10 @@ class _GoodsTransferState extends State<GoodsTransfer> {
               onPressed: () {
                 Navigator.pop(context); // close dialog
               },
-              child: Text("OK"),
+              child: Text(
+                "OK",
+                style: TextStyle(color: AppColor.baseColors),
+              ),
             ),
           ],
         );

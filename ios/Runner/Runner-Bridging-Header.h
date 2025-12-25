@@ -1,1 +1,6 @@
 #import "GeneratedPluginRegistrant.h"
+#import "Kmbluetooth.h"
+#import "FastCase.h"
+#import "HexUtils.h"
+#import "KmCase.h"
+//#import "BluetoothListViewController.h"

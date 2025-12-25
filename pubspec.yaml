@@ -36,12 +36,13 @@ dependencies:
   cupertino_icons: ^1.0.8
   get: ^4.7.2
   shared_preferences: ^2.5.3
-  flutter_blue_plus: ^2.0.0
-  flutter_bluetooth_printer: any
   qr_code_scanner_plus: ^2.0.14
   http: ^1.6.0
   device_info_plus: ^11.3.0
   internet_connection_checker: ^3.0.1
+  qr_flutter: ^4.1.0
+  image: ^4.5.4
+  screenshot: ^3.0.0
 
 dev_dependencies:
   flutter_test:

@@ -42,3 +42,8 @@ android {
 flutter {
     source = "../.."
 }
+
+dependencies {
+    implementation files('libs/hztytech_printer_sdk_2.0.4.4.jar')
+    implementation 'androidx.appcompat:appcompat:1.7.1'
+}

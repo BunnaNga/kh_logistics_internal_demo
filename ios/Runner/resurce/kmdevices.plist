@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>devices</key>
+	<array>
+		<dict>
+			<key>cmds</key>
+			<array>
+				<dict>
+					<key>cmd</key>
+					<string>SELFTEST</string>
+					<key>detail</key>
+					<string></string>
+				</dict>
+			</array>
+			<key>name</key>
+			<string>202BT</string>
+		</dict>
+	</array>
+	<key>name</key>
+	<string>逗比</string>
+	<key>password</key>
+	<string>dbdbdb</string>
+</dict>
+</plist>

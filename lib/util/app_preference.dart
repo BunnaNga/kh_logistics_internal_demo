@@ -2,7 +2,6 @@ import 'package:kh_logistics_internal_demo/util/constrain.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Preference {
-  
   Future<void> setToken(SharedPreferences prefs, String token) async {
     await prefs.setString(Constrain.TOKEN, token);
   }

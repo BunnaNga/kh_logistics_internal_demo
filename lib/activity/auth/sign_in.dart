@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kh_logistics_internal_demo/api/auth.dart';
+import 'package:kh_logistics_internal_demo/api/auth_request.dart';
 import 'package:kh_logistics_internal_demo/util/app_color.dart';
 
 class SignIn extends StatefulWidget {
@@ -38,7 +38,7 @@ class _SignInState extends State<SignIn> {
                 child: SizedBox(
                   height: 100,
                   width: double.infinity,
-                  child: Image.asset('assets/images/kh_logistic_logo.jpg'),
+                  child: Image.asset('assets/images/kh_logistic_logo.png'),
                 ),
               ),
             ),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kh_logistics_internal_demo/activity/goods_transfer/receipt_print_screen.dart';
+import 'package:kh_logistics_internal_demo/models/goods_transfer/goods_transfer_add_respone.dart';
 import 'package:kh_logistics_internal_demo/util/app_color.dart';
 
 class Setting extends StatefulWidget {
@@ -10,6 +12,47 @@ class Setting extends StatefulWidget {
 }
 
 class _SettingState extends State<Setting> {
+  List<GoodsTransferAddRespone> dataList = [
+    GoodsTransferAddRespone(
+      body: Body(
+        status: true,
+        message: "Test print",
+        data: [
+          Data.fromJson({
+            "code": "BBP-0072512-000049",
+            "destFrom": "សាខា ផ្សារឈូកមាស",
+            "destTo": "សាខាក្រាំងធ្វើក្នុង(បុរីវ៉ារីណា)",
+            "senderTel": "015644233",
+            "receiverTel": "089655234",
+            "transferFee": "1.0",
+            "deliveryFee": "0.0",
+            "totalFee": "1.0",
+            "printDate": "24/12/2025 10:31:29",
+            "printBy": "admin",
+            "created": "24/12/2025 10:31:29",
+            "createdBy": "admin",
+            "branchFName": "សាខា ផ្សារឈូកមាស",
+            "branchFTel": "016 267 603",
+            "branchTName": "សាខាក្រាំងធ្វើក្នុង(បុរីវ៉ារីណា)",
+            "branchTTel": "016 267 603",
+            "deliveryDestination": "",
+            "paidBy": 1,
+            "isCod": 0,
+            "printItemLayoutList": [
+              {
+                "itemCode": "BBP-0072512-000049-1",
+                "itemName": "Heidi",
+                "itemQty": "1",
+                "itemFee": "10.0 \$"
+              }
+            ]
+          })
+        ],
+      ),
+    ),
+  ];
+  // List<Data> dataList =
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -84,7 +127,13 @@ class _SettingState extends State<Setting> {
                 style: TextStyle(fontSize: 18, color: AppColor.baseColors)),
             SizedBox(height: 50),
             InkWell(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ReceiptPrintScreen(
+                            data: dataList[0].body!.data![0])));
+              },
               child: Container(
                 height: 50,
                 width: 100,

@@ -1,9 +1,9 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:kh_logistics_internal_demo/api/destination.dart';
-import 'package:kh_logistics_internal_demo/models/destination/destination_from.dart';
-import 'package:kh_logistics_internal_demo/models/destination/destination_to.dart';
+import 'package:kh_logistics_internal_demo/api/destination_request.dart';
+import 'package:kh_logistics_internal_demo/models/destination/destination_from_respone.dart';
+import 'package:kh_logistics_internal_demo/models/destination/destination_to_respone.dart';
 import 'package:kh_logistics_internal_demo/util/app_color.dart';
 import 'package:kh_logistics_internal_demo/util/value_statics.dart';
 
@@ -119,11 +119,13 @@ class _DestinationScreenState extends State<DestinationScreen> {
           final item = destinationList[index];
           return InkWell(
             onTap: () {
-              ValueStatics.destinationFromId = item.id;
+              widget.destinationType == 1
+                  ? ValueStatics.destinationFromId = item.id
+                  : ValueStatics.destinationToId = item.id;
               widget.destinationType == 1
                   ? ValueStatics.destinationFromTitle = item.name ?? ''
                   : ValueStatics.destinationToTitle = item.name ?? '';
-              log('id = ${ValueStatics.destinationFromId}');
+              log('id = ${widget.destinationType == 1 ? ValueStatics.destinationFromId : ValueStatics.destinationToId}');
               setState(() {});
               Navigator.pop(context, 1);
             },

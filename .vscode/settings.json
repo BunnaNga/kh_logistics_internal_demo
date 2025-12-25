@@ -1,0 +1,7 @@
+{
+    "editor.columnSelection": false,
+    "terminal.integrated.copyOnSelection": true,
+    "terminal.integrated.macOptionClickForcesSelection": true,
+    "editor.roundedSelection": false,
+    "editor.emptySelectionClipboard": true
+}

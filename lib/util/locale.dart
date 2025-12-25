@@ -15,7 +15,7 @@ class LocaleString extends Translations {
           'customer_receive': 'Customer Receive',
           'reports': 'Reports',
           'setting': 'Setting',
-          'change_language': 'Cange Language',
+          'change_language': 'Change Language',
           'logout': 'Logout',
 
           // For Goods Transfer Screen
@@ -34,6 +34,18 @@ class LocaleString extends Translations {
           'choose_printer': 'Choose Printer',
           'no_device_connect': 'No Device Connected',
           'print_test': 'Print Test',
+
+          // For Goods Information Screen
+          'goods_information': 'Goods Information',
+          'enter_item_name': 'Please enter item name',
+          'item_type': 'Item Type',
+          'item_name': 'Item Name',
+          'item_value': 'Item Value',
+          'quantity': 'Quantity',
+          'unit_fee': 'Unit Fee',
+          'total_fee': 'Total Fee',
+          'currency': 'Currency',
+          'paid': 'Paid',
         },
         'km_KH': {
           //for Menu Screen
@@ -65,6 +77,18 @@ class LocaleString extends Translations {
           'choose_printer': 'ជ្រើសរើស Printer',
           'no_device_connect': 'គ្មានឧបករណ៍ភ្ជាប់',
           'print_test': 'ព្រីនតេស្ត',
+
+          // For Goods Information Screen
+          'goods_information': 'ព័ត៌មានអីវ៉ាន់',
+          'enter_item_name': 'សូមបញ្ចូលឈ្មោះអីវ៉ាន់',
+          'item_type': 'ប្រភេទអីវ៉ាន់',
+          'item_name': 'ឈ្មោះអីវ៉ាន់',
+          'item_value': 'តម្លៃអីវ៉ាន់',
+          'quantity': 'បរិមាណ',
+          'unit_fee': 'តម្លៃរាយ',
+          'total_fee': 'តម្លៃសរុប',
+          'currency': 'រូបិយប័ណ្ណ',
+          'paid': 'បង់ប្រាក់',
         },
       };
 }

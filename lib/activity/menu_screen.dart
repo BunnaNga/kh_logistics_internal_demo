@@ -7,7 +7,7 @@ import 'package:kh_logistics_internal_demo/activity/move_item_to_van/move_item_t
 import 'package:kh_logistics_internal_demo/activity/reports/reports.dart';
 import 'package:kh_logistics_internal_demo/activity/user_setting/change_language.dart';
 import 'package:kh_logistics_internal_demo/activity/user_setting/setting.dart';
-import 'package:kh_logistics_internal_demo/api/auth.dart';
+import 'package:kh_logistics_internal_demo/api/auth_request.dart';
 import 'package:kh_logistics_internal_demo/util/app_color.dart';
 import 'package:kh_logistics_internal_demo/util/app_version.dart';
 
@@ -42,7 +42,7 @@ class _MenuScreenState extends State<MenuScreen> {
     },
   ];
   List<Widget> mainFunctionScreens = [
-    GoodsTransfer(),
+    GoodsTransferScreen(),
     MoveItemToVan(),
     MoveItemFromVan(),
     CustomerReceive(),
@@ -65,7 +65,7 @@ class _MenuScreenState extends State<MenuScreen> {
                 child: SizedBox(
                     height: 120,
                     width: 150,
-                    child: Image.asset('assets/images/kh_logistic_logo.jpg')),
+                    child: Image.asset('assets/images/kh_logistic_logo.png')),
               ),
             ),
             Container(

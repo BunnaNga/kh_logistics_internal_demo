@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kh_logistics_internal_demo/activity/destination_screen.dart';
+import 'package:kh_logistics_internal_demo/activity/select_van.dart';
 import 'package:kh_logistics_internal_demo/util/app_color.dart';
+import 'package:kh_logistics_internal_demo/util/value_statics.dart';
 
 class MoveItemFromVan extends StatefulWidget {
   const MoveItemFromVan({super.key});
@@ -13,6 +16,13 @@ class _MoveItemFromVanState extends State<MoveItemFromVan> {
   DateTime? selectedDate = DateTime.now();
   TimeOfDay selectedTime = TimeOfDay.now();
   bool all = false;
+
+  @override
+  void dispose() {
+    ValueStatics.destinationFromTitle = '';
+    ValueStatics.vanName = '';
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +80,19 @@ class _MoveItemFromVanState extends State<MoveItemFromVan> {
               SizedBox(height: 20),
               Text('branch'.tr, style: TextStyle(fontSize: 16)),
               InkWell(
-                onTap: () {},
+                onTap: () async {
+                  final result = await Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => DestinationScreen(
+                              destinationTitle: 'destination_from'.tr,
+                              destinationType: 1,
+                            )),
+                  );
+                  if (result != null) {
+                    setState(() {});
+                  }
+                },
                 child: Container(
                   height: 40,
                   width: double.infinity,
@@ -87,7 +109,9 @@ class _MoveItemFromVanState extends State<MoveItemFromVan> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text('please_select'.tr),
+                        Text(ValueStatics.destinationFromTitle.isEmpty
+                            ? 'please_select'.tr
+                            : ValueStatics.destinationFromTitle),
                         Icon(
                           Icons.arrow_forward_ios,
                           size: 15,
@@ -120,7 +144,15 @@ class _MoveItemFromVanState extends State<MoveItemFromVan> {
                 ],
               ),
               InkWell(
-                onTap: () {},
+                onTap: () async {
+                  final result = await Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => VanScreen()),
+                  );
+                  if (result != null) {
+                    setState(() {});
+                  }
+                },
                 child: Container(
                   height: 40,
                   width: double.infinity,
@@ -137,7 +169,9 @@ class _MoveItemFromVanState extends State<MoveItemFromVan> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text('please_select'.tr),
+                        Text(ValueStatics.vanName.isEmpty
+                            ? 'please_select'.tr
+                            : ValueStatics.vanName),
                         Icon(
                           Icons.arrow_forward_ios,
                           size: 15,

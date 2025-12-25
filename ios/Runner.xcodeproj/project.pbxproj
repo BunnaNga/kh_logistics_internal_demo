@@ -10,9 +10,53 @@
 		1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */; };
 		331C808B294A63AB00263BE5 /* RunnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331C807B294A618700263BE5 /* RunnerTests.swift */; };
 		3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */; };
+		524550DA2EFB809D006EF5C1 /* test_printer.png in Resources */ = {isa = PBXBuildFile; fileRef = 524550D92EFB809D006EF5C1 /* test_printer.png */; };
+		5268583C2EFA87A8005A75A6 /* 英文模版_100x200_b64.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5268582A2EFA87A8005A75A6 /* 英文模版_100x200_b64.txt */; };
+		5268583D2EFA87A8005A75A6 /* 模糊数据_75x150_b64.txt in Resources */ = {isa = PBXBuildFile; fileRef = 526858242EFA87A8005A75A6 /* 模糊数据_75x150_b64.txt */; };
+		5268583E2EFA87A8005A75A6 /* t2.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 526858202EFA87A8005A75A6 /* t2.pdf */; };
+		5268583F2EFA87A8005A75A6 /* 新疆语言_75x150_b64.txt in Resources */ = {isa = PBXBuildFile; fileRef = 526858252EFA87A8005A75A6 /* 新疆语言_75x150_b64.txt */; };
+		526858402EFA87A8005A75A6 /* KM_360B_220808.bin in Resources */ = {isa = PBXBuildFile; fileRef = 5268581C2EFA87A8005A75A6 /* KM_360B_220808.bin */; };
+		526858412EFA87A8005A75A6 /* 睿本打印空白页.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5268582C2EFA87A8005A75A6 /* 睿本打印空白页.txt */; };
+		526858422EFA87A8005A75A6 /* kmdevices.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5268583A2EFA87A8005A75A6 /* kmdevices.plist */; };
+		526858432EFA87A8005A75A6 /* 英文模版_75x150_b64.txt in Resources */ = {isa = PBXBuildFile; fileRef = 526858292EFA87A8005A75A6 /* 英文模版_75x150_b64.txt */; };
+		526858442EFA87A8005A75A6 /* 快麦打印机规范.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 526858212EFA87A8005A75A6 /* 快麦打印机规范.jpeg */; };
+		526858452EFA87A8005A75A6 /* 测试模版_40x30_b64.txt in Resources */ = {isa = PBXBuildFile; fileRef = 526858282EFA87A8005A75A6 /* 测试模版_40x30_b64.txt */; };
+		526858462EFA87A8005A75A6 /* 两栖模版_58.txt in Resources */ = {isa = PBXBuildFile; fileRef = 526858332EFA87A8005A75A6 /* 两栖模版_58.txt */; };
+		526858472EFA87A8005A75A6 /* 新疆语言_75x150_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 5268581D2EFA87A8005A75A6 /* 新疆语言_75x150_image.png */; };
+		526858482EFA87A8005A75A6 /* 快麦指令规范_V1.5.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 5268581F2EFA87A8005A75A6 /* 快麦指令规范_V1.5.pdf */; };
+		526858492EFA87A8005A75A6 /* 秦丝表格_58.txt in Resources */ = {isa = PBXBuildFile; fileRef = 526858312EFA87A8005A75A6 /* 秦丝表格_58.txt */; };
+		5268584A2EFA87A8005A75A6 /* 切换ESC中文并打印.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5268582F2EFA87A8005A75A6 /* 切换ESC中文并打印.txt */; };
+		5268584B2EFA87A8005A75A6 /* 抽烟鸭屎香_50x70_b64.txt in Resources */ = {isa = PBXBuildFile; fileRef = 526858262EFA87A8005A75A6 /* 抽烟鸭屎香_50x70_b64.txt */; };
+		5268584C2EFA87A8005A75A6 /* 佳博hex.txt in Resources */ = {isa = PBXBuildFile; fileRef = 526858372EFA87A8005A75A6 /* 佳博hex.txt */; };
+		5268584D2EFA87A8005A75A6 /* 快麦打印机.txt in Resources */ = {isa = PBXBuildFile; fileRef = 526858382EFA87A8005A75A6 /* 快麦打印机.txt */; };
+		5268584E2EFA87A8005A75A6 /* 打印错位问题.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5268582D2EFA87A8005A75A6 /* 打印错位问题.txt */; };
+		5268584F2EFA87A8005A75A6 /* 竖排二维码b64.txt in Resources */ = {isa = PBXBuildFile; fileRef = 526858302EFA87A8005A75A6 /* 竖排二维码b64.txt */; };
+		526858502EFA87A8005A75A6 /* 真空机135 DHL运单20210104_439668392_1001023704.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 5268581E2EFA87A8005A75A6 /* 真空机135 DHL运单20210104_439668392_1001023704.pdf */; };
+		526858512EFA87A8005A75A6 /* 秦丝模版_80.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5268582E2EFA87A8005A75A6 /* 秦丝模版_80.txt */; };
+		526858522EFA87A8005A75A6 /* 秦丝模版_110.txt in Resources */ = {isa = PBXBuildFile; fileRef = 526858322EFA87A8005A75A6 /* 秦丝模版_110.txt */; };
+		526858532EFA87A8005A75A6 /* 二维码_100x75_b64.txt in Resources */ = {isa = PBXBuildFile; fileRef = 526858272EFA87A8005A75A6 /* 二维码_100x75_b64.txt */; };
+		526858542EFA87A8005A75A6 /* 秦丝并排二维码_58.txt in Resources */ = {isa = PBXBuildFile; fileRef = 526858342EFA87A8005A75A6 /* 秦丝并排二维码_58.txt */; };
+		526858552EFA87A8005A75A6 /* image.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 526858222EFA87A8005A75A6 /* image.jpeg */; };
+		526858562EFA87A8005A75A6 /* DL-286D.txt in Resources */ = {isa = PBXBuildFile; fileRef = 526858362EFA87A8005A75A6 /* DL-286D.txt */; };
+		5268586D2EFA8D13005A75A6 /* MJPropertyKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 526858672EFA8D13005A75A6 /* MJPropertyKey.m */; };
+		5268586E2EFA8D13005A75A6 /* NSObject+MJKeyValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 5268585D2EFA8D13005A75A6 /* NSObject+MJKeyValue.m */; };
+		5268586F2EFA8D13005A75A6 /* MJFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5268586B2EFA8D13005A75A6 /* MJFoundation.m */; };
+		526858702EFA8D13005A75A6 /* NSObject+MJProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 526858632EFA8D13005A75A6 /* NSObject+MJProperty.m */; };
+		526858712EFA8D13005A75A6 /* MJProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 5268585E2EFA8D13005A75A6 /* MJProperty.m */; };
+		526858722EFA8D13005A75A6 /* NSString+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 526858662EFA8D13005A75A6 /* NSString+MJExtension.m */; };
+		526858732EFA8D13005A75A6 /* NSObject+MJClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 526858652EFA8D13005A75A6 /* NSObject+MJClass.m */; };
+		526858742EFA8D13005A75A6 /* MJPropertyType.m in Sources */ = {isa = PBXBuildFile; fileRef = 5268585A2EFA8D13005A75A6 /* MJPropertyType.m */; };
+		526858752EFA8D13005A75A6 /* NSObject+MJCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 526858602EFA8D13005A75A6 /* NSObject+MJCoding.m */; };
+		526858762EFA8D13005A75A6 /* MJExtensionConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 526858622EFA8D13005A75A6 /* MJExtensionConst.m */; };
+		52ABEAC52EF6538D0050D903 /* libhztytech_printer_sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52ABEABC2EF6538D0050D903 /* libhztytech_printer_sdk.a */; };
+		52ABEAC62EF6538D0050D903 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 52ABEAC22EF6538D0050D903 /* MBProgressHUD.m */; };
+		52ABEAD02EF659E50050D903 /* PrintModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 52ABEACC2EF659E50050D903 /* PrintModel.m */; };
+		52ABEAD12EF659E50050D903 /* KmCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 52ABEACA2EF659E50050D903 /* KmCase.m */; };
+		52ABEAD22EF659E50050D903 /* FastCase.m in Sources */ = {isa = PBXBuildFile; fileRef = 52ABEAC82EF659E50050D903 /* FastCase.m */; };
+		52ABEAD32EF659E50050D903 /* PrintModelList.m in Sources */ = {isa = PBXBuildFile; fileRef = 52ABEACE2EF659E50050D903 /* PrintModelList.m */; };
+		52ABEAD82EF8F01A0050D903 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ABEAD72EF8F00F0050D903 /* AppDelegate.swift */; };
 		5888A994475F0C36255876AD /* Pods_RunnerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34C351BFE6B49FC67EC49A78 /* Pods_RunnerTests.framework */; };
 		7032C5FE4C6074CD2369D7F1 /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 998D5C40F55C101AEC9E696A /* Pods_Runner.framework */; };
-		74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74858FAE1ED2DC5600515810 /* AppDelegate.swift */; };
 		97C146FC1CF9000F007C117D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FA1CF9000F007C117D /* Main.storyboard */; };
 		97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FD1CF9000F007C117D /* Assets.xcassets */; };
 		97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */; };
@@ -48,10 +92,81 @@
 		331C8081294A63A400263BE5 /* RunnerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RunnerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		34C351BFE6B49FC67EC49A78 /* Pods_RunnerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RunnerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = AppFrameworkInfo.plist; path = Flutter/AppFrameworkInfo.plist; sourceTree = "<group>"; };
+		524550D92EFB809D006EF5C1 /* test_printer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test_printer.png; sourceTree = "<group>"; };
+		5268581C2EFA87A8005A75A6 /* KM_360B_220808.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = KM_360B_220808.bin; sourceTree = "<group>"; };
+		5268581D2EFA87A8005A75A6 /* 新疆语言_75x150_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "新疆语言_75x150_image.png"; sourceTree = "<group>"; };
+		5268581E2EFA87A8005A75A6 /* 真空机135 DHL运单20210104_439668392_1001023704.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "真空机135 DHL运单20210104_439668392_1001023704.pdf"; sourceTree = "<group>"; };
+		5268581F2EFA87A8005A75A6 /* 快麦指令规范_V1.5.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "快麦指令规范_V1.5.pdf"; sourceTree = "<group>"; };
+		526858202EFA87A8005A75A6 /* t2.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = t2.pdf; sourceTree = "<group>"; };
+		526858212EFA87A8005A75A6 /* 快麦打印机规范.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "快麦打印机规范.jpeg"; sourceTree = "<group>"; };
+		526858222EFA87A8005A75A6 /* image.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image.jpeg; sourceTree = "<group>"; };
+		526858242EFA87A8005A75A6 /* 模糊数据_75x150_b64.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "模糊数据_75x150_b64.txt"; sourceTree = "<group>"; };
+		526858252EFA87A8005A75A6 /* 新疆语言_75x150_b64.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "新疆语言_75x150_b64.txt"; sourceTree = "<group>"; };
+		526858262EFA87A8005A75A6 /* 抽烟鸭屎香_50x70_b64.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "抽烟鸭屎香_50x70_b64.txt"; sourceTree = "<group>"; };
+		526858272EFA87A8005A75A6 /* 二维码_100x75_b64.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "二维码_100x75_b64.txt"; sourceTree = "<group>"; };
+		526858282EFA87A8005A75A6 /* 测试模版_40x30_b64.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "测试模版_40x30_b64.txt"; sourceTree = "<group>"; };
+		526858292EFA87A8005A75A6 /* 英文模版_75x150_b64.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "英文模版_75x150_b64.txt"; sourceTree = "<group>"; };
+		5268582A2EFA87A8005A75A6 /* 英文模版_100x200_b64.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "英文模版_100x200_b64.txt"; sourceTree = "<group>"; };
+		5268582C2EFA87A8005A75A6 /* 睿本打印空白页.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "睿本打印空白页.txt"; sourceTree = "<group>"; };
+		5268582D2EFA87A8005A75A6 /* 打印错位问题.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "打印错位问题.txt"; sourceTree = "<group>"; };
+		5268582E2EFA87A8005A75A6 /* 秦丝模版_80.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "秦丝模版_80.txt"; sourceTree = "<group>"; };
+		5268582F2EFA87A8005A75A6 /* 切换ESC中文并打印.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "切换ESC中文并打印.txt"; sourceTree = "<group>"; };
+		526858302EFA87A8005A75A6 /* 竖排二维码b64.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "竖排二维码b64.txt"; sourceTree = "<group>"; };
+		526858312EFA87A8005A75A6 /* 秦丝表格_58.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "秦丝表格_58.txt"; sourceTree = "<group>"; };
+		526858322EFA87A8005A75A6 /* 秦丝模版_110.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "秦丝模版_110.txt"; sourceTree = "<group>"; };
+		526858332EFA87A8005A75A6 /* 两栖模版_58.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "两栖模版_58.txt"; sourceTree = "<group>"; };
+		526858342EFA87A8005A75A6 /* 秦丝并排二维码_58.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "秦丝并排二维码_58.txt"; sourceTree = "<group>"; };
+		526858362EFA87A8005A75A6 /* DL-286D.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "DL-286D.txt"; sourceTree = "<group>"; };
+		526858372EFA87A8005A75A6 /* 佳博hex.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "佳博hex.txt"; sourceTree = "<group>"; };
+		526858382EFA87A8005A75A6 /* 快麦打印机.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "快麦打印机.txt"; sourceTree = "<group>"; };
+		5268583A2EFA87A8005A75A6 /* kmdevices.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = kmdevices.plist; sourceTree = "<group>"; };
+		526858572EFA8D13005A75A6 /* MJPropertyKey.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MJPropertyKey.h; sourceTree = "<group>"; };
+		526858582EFA8D13005A75A6 /* NSObject+MJClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+MJClass.h"; sourceTree = "<group>"; };
+		526858592EFA8D13005A75A6 /* NSString+MJExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+MJExtension.h"; sourceTree = "<group>"; };
+		5268585A2EFA8D13005A75A6 /* MJPropertyType.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MJPropertyType.m; sourceTree = "<group>"; };
+		5268585B2EFA8D13005A75A6 /* NSObject+MJProperty.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+MJProperty.h"; sourceTree = "<group>"; };
+		5268585C2EFA8D13005A75A6 /* MJExtensionConst.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MJExtensionConst.h; sourceTree = "<group>"; };
+		5268585D2EFA8D13005A75A6 /* NSObject+MJKeyValue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MJKeyValue.m"; sourceTree = "<group>"; };
+		5268585E2EFA8D13005A75A6 /* MJProperty.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MJProperty.m; sourceTree = "<group>"; };
+		5268585F2EFA8D13005A75A6 /* MJFoundation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MJFoundation.h; sourceTree = "<group>"; };
+		526858602EFA8D13005A75A6 /* NSObject+MJCoding.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MJCoding.m"; sourceTree = "<group>"; };
+		526858612EFA8D13005A75A6 /* MJExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MJExtension.h; sourceTree = "<group>"; };
+		526858622EFA8D13005A75A6 /* MJExtensionConst.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MJExtensionConst.m; sourceTree = "<group>"; };
+		526858632EFA8D13005A75A6 /* NSObject+MJProperty.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MJProperty.m"; sourceTree = "<group>"; };
+		526858642EFA8D13005A75A6 /* MJPropertyType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MJPropertyType.h; sourceTree = "<group>"; };
+		526858652EFA8D13005A75A6 /* NSObject+MJClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MJClass.m"; sourceTree = "<group>"; };
+		526858662EFA8D13005A75A6 /* NSString+MJExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+MJExtension.m"; sourceTree = "<group>"; };
+		526858672EFA8D13005A75A6 /* MJPropertyKey.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MJPropertyKey.m; sourceTree = "<group>"; };
+		526858682EFA8D13005A75A6 /* MJProperty.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MJProperty.h; sourceTree = "<group>"; };
+		526858692EFA8D13005A75A6 /* NSObject+MJKeyValue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+MJKeyValue.h"; sourceTree = "<group>"; };
+		5268586A2EFA8D13005A75A6 /* NSObject+MJCoding.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+MJCoding.h"; sourceTree = "<group>"; };
+		5268586B2EFA8D13005A75A6 /* MJFoundation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MJFoundation.m; sourceTree = "<group>"; };
+		52ABEAB42EF6538D0050D903 /* CpclCreater.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CpclCreater.h; sourceTree = "<group>"; };
+		52ABEAB52EF6538D0050D903 /* CpclImageCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CpclImageCommand.h; sourceTree = "<group>"; };
+		52ABEAB62EF6538D0050D903 /* EscCreater.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EscCreater.h; sourceTree = "<group>"; };
+		52ABEAB72EF6538D0050D903 /* EscImageCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EscImageCommand.h; sourceTree = "<group>"; };
+		52ABEAB82EF6538D0050D903 /* HexUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HexUtils.h; sourceTree = "<group>"; };
+		52ABEAB92EF6538D0050D903 /* ImageUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageUtils.h; sourceTree = "<group>"; };
+		52ABEABA2EF6538D0050D903 /* Kmbluetooth.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Kmbluetooth.h; sourceTree = "<group>"; };
+		52ABEABB2EF6538D0050D903 /* KmpclCreater.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KmpclCreater.h; sourceTree = "<group>"; };
+		52ABEABC2EF6538D0050D903 /* libhztytech_printer_sdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libhztytech_printer_sdk.a; sourceTree = "<group>"; };
+		52ABEABD2EF6538D0050D903 /* TscCreater.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TscCreater.h; sourceTree = "<group>"; };
+		52ABEABE2EF6538D0050D903 /* TscImageCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TscImageCommand.h; sourceTree = "<group>"; };
+		52ABEABF2EF6538D0050D903 /* UIImage+EscCmd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+EscCmd.h"; sourceTree = "<group>"; };
+		52ABEAC12EF6538D0050D903 /* MBProgressHUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		52ABEAC22EF6538D0050D903 /* MBProgressHUD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		52ABEAC72EF659E50050D903 /* FastCase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FastCase.h; sourceTree = "<group>"; };
+		52ABEAC82EF659E50050D903 /* FastCase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FastCase.m; sourceTree = "<group>"; };
+		52ABEAC92EF659E50050D903 /* KmCase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KmCase.h; sourceTree = "<group>"; };
+		52ABEACA2EF659E50050D903 /* KmCase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KmCase.m; sourceTree = "<group>"; };
+		52ABEACB2EF659E50050D903 /* PrintModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrintModel.h; sourceTree = "<group>"; };
+		52ABEACC2EF659E50050D903 /* PrintModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PrintModel.m; sourceTree = "<group>"; };
+		52ABEACD2EF659E50050D903 /* PrintModelList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrintModelList.h; sourceTree = "<group>"; };
+		52ABEACE2EF659E50050D903 /* PrintModelList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PrintModelList.m; sourceTree = "<group>"; };
+		52ABEAD72EF8F00F0050D903 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52F97AD82EAA097700C41249 /* Runner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Runner.entitlements; sourceTree = "<group>"; };
 		718D06665B833C2AB6E246CA /* Pods-RunnerTests.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunnerTests.profile.xcconfig"; path = "Target Support Files/Pods-RunnerTests/Pods-RunnerTests.profile.xcconfig"; sourceTree = "<group>"; };
 		74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Runner-Bridging-Header.h"; sourceTree = "<group>"; };
-		74858FAE1ED2DC5600515810 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7AFA3C8E1D35360C0083082E /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Release.xcconfig; path = Flutter/Release.xcconfig; sourceTree = "<group>"; };
 		80A577A53D680F2F07B586E4 /* Pods-RunnerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunnerTests.release.xcconfig"; path = "Target Support Files/Pods-RunnerTests/Pods-RunnerTests.release.xcconfig"; sourceTree = "<group>"; };
 		9740EEB21CF90195004384FC /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Debug.xcconfig; path = Flutter/Debug.xcconfig; sourceTree = "<group>"; };
@@ -73,6 +188,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52ABEAC52EF6538D0050D903 /* libhztytech_printer_sdk.a in Frameworks */,
 				7032C5FE4C6074CD2369D7F1 /* Pods_Runner.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -94,6 +210,153 @@
 				331C807B294A618700263BE5 /* RunnerTests.swift */,
 			);
 			path = RunnerTests;
+			sourceTree = "<group>";
+		};
+		526858232EFA87A8005A75A6 /* image */ = {
+			isa = PBXGroup;
+			children = (
+				526858222EFA87A8005A75A6 /* image.jpeg */,
+			);
+			path = image;
+			sourceTree = "<group>";
+		};
+		5268582B2EFA87A8005A75A6 /* image_b64 */ = {
+			isa = PBXGroup;
+			children = (
+				526858242EFA87A8005A75A6 /* 模糊数据_75x150_b64.txt */,
+				526858252EFA87A8005A75A6 /* 新疆语言_75x150_b64.txt */,
+				526858262EFA87A8005A75A6 /* 抽烟鸭屎香_50x70_b64.txt */,
+				526858272EFA87A8005A75A6 /* 二维码_100x75_b64.txt */,
+				526858282EFA87A8005A75A6 /* 测试模版_40x30_b64.txt */,
+				526858292EFA87A8005A75A6 /* 英文模版_75x150_b64.txt */,
+				5268582A2EFA87A8005A75A6 /* 英文模版_100x200_b64.txt */,
+			);
+			path = image_b64;
+			sourceTree = "<group>";
+		};
+		526858352EFA87A8005A75A6 /* 秦丝模版 */ = {
+			isa = PBXGroup;
+			children = (
+				5268582C2EFA87A8005A75A6 /* 睿本打印空白页.txt */,
+				5268582D2EFA87A8005A75A6 /* 打印错位问题.txt */,
+				5268582E2EFA87A8005A75A6 /* 秦丝模版_80.txt */,
+				5268582F2EFA87A8005A75A6 /* 切换ESC中文并打印.txt */,
+				526858302EFA87A8005A75A6 /* 竖排二维码b64.txt */,
+				526858312EFA87A8005A75A6 /* 秦丝表格_58.txt */,
+				526858322EFA87A8005A75A6 /* 秦丝模版_110.txt */,
+				526858332EFA87A8005A75A6 /* 两栖模版_58.txt */,
+				526858342EFA87A8005A75A6 /* 秦丝并排二维码_58.txt */,
+			);
+			path = "秦丝模版";
+			sourceTree = "<group>";
+		};
+		526858392EFA87A8005A75A6 /* text */ = {
+			isa = PBXGroup;
+			children = (
+				526858362EFA87A8005A75A6 /* DL-286D.txt */,
+				526858372EFA87A8005A75A6 /* 佳博hex.txt */,
+				526858382EFA87A8005A75A6 /* 快麦打印机.txt */,
+			);
+			path = text;
+			sourceTree = "<group>";
+		};
+		5268583B2EFA87A8005A75A6 /* resurce */ = {
+			isa = PBXGroup;
+			children = (
+				524550D92EFB809D006EF5C1 /* test_printer.png */,
+				5268581C2EFA87A8005A75A6 /* KM_360B_220808.bin */,
+				5268581D2EFA87A8005A75A6 /* 新疆语言_75x150_image.png */,
+				5268581E2EFA87A8005A75A6 /* 真空机135 DHL运单20210104_439668392_1001023704.pdf */,
+				5268581F2EFA87A8005A75A6 /* 快麦指令规范_V1.5.pdf */,
+				526858202EFA87A8005A75A6 /* t2.pdf */,
+				526858212EFA87A8005A75A6 /* 快麦打印机规范.jpeg */,
+				526858232EFA87A8005A75A6 /* image */,
+				5268582B2EFA87A8005A75A6 /* image_b64 */,
+				526858352EFA87A8005A75A6 /* 秦丝模版 */,
+				526858392EFA87A8005A75A6 /* text */,
+				5268583A2EFA87A8005A75A6 /* kmdevices.plist */,
+			);
+			path = resurce;
+			sourceTree = "<group>";
+		};
+		5268586C2EFA8D13005A75A6 /* MJExtension */ = {
+			isa = PBXGroup;
+			children = (
+				526858572EFA8D13005A75A6 /* MJPropertyKey.h */,
+				526858582EFA8D13005A75A6 /* NSObject+MJClass.h */,
+				526858592EFA8D13005A75A6 /* NSString+MJExtension.h */,
+				5268585A2EFA8D13005A75A6 /* MJPropertyType.m */,
+				5268585B2EFA8D13005A75A6 /* NSObject+MJProperty.h */,
+				5268585C2EFA8D13005A75A6 /* MJExtensionConst.h */,
+				5268585D2EFA8D13005A75A6 /* NSObject+MJKeyValue.m */,
+				5268585E2EFA8D13005A75A6 /* MJProperty.m */,
+				5268585F2EFA8D13005A75A6 /* MJFoundation.h */,
+				526858602EFA8D13005A75A6 /* NSObject+MJCoding.m */,
+				526858612EFA8D13005A75A6 /* MJExtension.h */,
+				526858622EFA8D13005A75A6 /* MJExtensionConst.m */,
+				526858632EFA8D13005A75A6 /* NSObject+MJProperty.m */,
+				526858642EFA8D13005A75A6 /* MJPropertyType.h */,
+				526858652EFA8D13005A75A6 /* NSObject+MJClass.m */,
+				526858662EFA8D13005A75A6 /* NSString+MJExtension.m */,
+				526858672EFA8D13005A75A6 /* MJPropertyKey.m */,
+				526858682EFA8D13005A75A6 /* MJProperty.h */,
+				526858692EFA8D13005A75A6 /* NSObject+MJKeyValue.h */,
+				5268586A2EFA8D13005A75A6 /* NSObject+MJCoding.h */,
+				5268586B2EFA8D13005A75A6 /* MJFoundation.m */,
+			);
+			path = MJExtension;
+			sourceTree = "<group>";
+		};
+		52ABEAC02EF6538D0050D903 /* hztytech_printer_sdk */ = {
+			isa = PBXGroup;
+			children = (
+				52ABEAB42EF6538D0050D903 /* CpclCreater.h */,
+				52ABEAB52EF6538D0050D903 /* CpclImageCommand.h */,
+				52ABEAB62EF6538D0050D903 /* EscCreater.h */,
+				52ABEAB72EF6538D0050D903 /* EscImageCommand.h */,
+				52ABEAB82EF6538D0050D903 /* HexUtils.h */,
+				52ABEAB92EF6538D0050D903 /* ImageUtils.h */,
+				52ABEABA2EF6538D0050D903 /* Kmbluetooth.h */,
+				52ABEABB2EF6538D0050D903 /* KmpclCreater.h */,
+				52ABEABC2EF6538D0050D903 /* libhztytech_printer_sdk.a */,
+				52ABEABD2EF6538D0050D903 /* TscCreater.h */,
+				52ABEABE2EF6538D0050D903 /* TscImageCommand.h */,
+				52ABEABF2EF6538D0050D903 /* UIImage+EscCmd.h */,
+			);
+			path = hztytech_printer_sdk;
+			sourceTree = "<group>";
+		};
+		52ABEAC32EF6538D0050D903 /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				52ABEAC12EF6538D0050D903 /* MBProgressHUD.h */,
+				52ABEAC22EF6538D0050D903 /* MBProgressHUD.m */,
+			);
+			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		52ABEAC42EF6538D0050D903 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				52ABEAC02EF6538D0050D903 /* hztytech_printer_sdk */,
+				52ABEAC32EF6538D0050D903 /* MBProgressHUD */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		52ABEACF2EF659E50050D903 /* km_mode */ = {
+			isa = PBXGroup;
+			children = (
+				52ABEAC72EF659E50050D903 /* FastCase.h */,
+				52ABEAC82EF659E50050D903 /* FastCase.m */,
+				52ABEAC92EF659E50050D903 /* KmCase.h */,
+				52ABEACA2EF659E50050D903 /* KmCase.m */,
+				52ABEACB2EF659E50050D903 /* PrintModel.h */,
+				52ABEACC2EF659E50050D903 /* PrintModel.m */,
+				52ABEACD2EF659E50050D903 /* PrintModelList.h */,
+				52ABEACE2EF659E50050D903 /* PrintModelList.m */,
+			);
+			path = km_mode;
 			sourceTree = "<group>";
 		};
 		9740EEB11CF90186004384FC /* Flutter */ = {
@@ -131,6 +394,11 @@
 		97C146F01CF9000F007C117D /* Runner */ = {
 			isa = PBXGroup;
 			children = (
+				5268586C2EFA8D13005A75A6 /* MJExtension */,
+				5268583B2EFA87A8005A75A6 /* resurce */,
+				52ABEAD72EF8F00F0050D903 /* AppDelegate.swift */,
+				52ABEACF2EF659E50050D903 /* km_mode */,
+				52ABEAC42EF6538D0050D903 /* libs */,
 				52F97AD82EAA097700C41249 /* Runner.entitlements */,
 				97C146FA1CF9000F007C117D /* Main.storyboard */,
 				97C146FD1CF9000F007C117D /* Assets.xcassets */,
@@ -138,7 +406,6 @@
 				97C147021CF9000F007C117D /* Info.plist */,
 				1498D2321E8E86230040F4C2 /* GeneratedPluginRegistrant.h */,
 				1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */,
-				74858FAE1ED2DC5600515810 /* AppDelegate.swift */,
 				74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */,
 			);
 			path = Runner;
@@ -265,6 +532,34 @@
 				3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */,
 				97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */,
 				97C146FC1CF9000F007C117D /* Main.storyboard in Resources */,
+				5268583C2EFA87A8005A75A6 /* 英文模版_100x200_b64.txt in Resources */,
+				5268583D2EFA87A8005A75A6 /* 模糊数据_75x150_b64.txt in Resources */,
+				524550DA2EFB809D006EF5C1 /* test_printer.png in Resources */,
+				5268583E2EFA87A8005A75A6 /* t2.pdf in Resources */,
+				5268583F2EFA87A8005A75A6 /* 新疆语言_75x150_b64.txt in Resources */,
+				526858402EFA87A8005A75A6 /* KM_360B_220808.bin in Resources */,
+				526858412EFA87A8005A75A6 /* 睿本打印空白页.txt in Resources */,
+				526858422EFA87A8005A75A6 /* kmdevices.plist in Resources */,
+				526858432EFA87A8005A75A6 /* 英文模版_75x150_b64.txt in Resources */,
+				526858442EFA87A8005A75A6 /* 快麦打印机规范.jpeg in Resources */,
+				526858452EFA87A8005A75A6 /* 测试模版_40x30_b64.txt in Resources */,
+				526858462EFA87A8005A75A6 /* 两栖模版_58.txt in Resources */,
+				526858472EFA87A8005A75A6 /* 新疆语言_75x150_image.png in Resources */,
+				526858482EFA87A8005A75A6 /* 快麦指令规范_V1.5.pdf in Resources */,
+				526858492EFA87A8005A75A6 /* 秦丝表格_58.txt in Resources */,
+				5268584A2EFA87A8005A75A6 /* 切换ESC中文并打印.txt in Resources */,
+				5268584B2EFA87A8005A75A6 /* 抽烟鸭屎香_50x70_b64.txt in Resources */,
+				5268584C2EFA87A8005A75A6 /* 佳博hex.txt in Resources */,
+				5268584D2EFA87A8005A75A6 /* 快麦打印机.txt in Resources */,
+				5268584E2EFA87A8005A75A6 /* 打印错位问题.txt in Resources */,
+				5268584F2EFA87A8005A75A6 /* 竖排二维码b64.txt in Resources */,
+				526858502EFA87A8005A75A6 /* 真空机135 DHL运单20210104_439668392_1001023704.pdf in Resources */,
+				526858512EFA87A8005A75A6 /* 秦丝模版_80.txt in Resources */,
+				526858522EFA87A8005A75A6 /* 秦丝模版_110.txt in Resources */,
+				526858532EFA87A8005A75A6 /* 二维码_100x75_b64.txt in Resources */,
+				526858542EFA87A8005A75A6 /* 秦丝并排二维码_58.txt in Resources */,
+				526858552EFA87A8005A75A6 /* image.jpeg in Resources */,
+				526858562EFA87A8005A75A6 /* DL-286D.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,7 +673,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */,
+				52ABEAD82EF8F01A0050D903 /* AppDelegate.swift in Sources */,
+				52ABEAD02EF659E50050D903 /* PrintModel.m in Sources */,
+				52ABEAD12EF659E50050D903 /* KmCase.m in Sources */,
+				52ABEAD22EF659E50050D903 /* FastCase.m in Sources */,
+				52ABEAD32EF659E50050D903 /* PrintModelList.m in Sources */,
+				52ABEAC62EF6538D0050D903 /* MBProgressHUD.m in Sources */,
+				5268586D2EFA8D13005A75A6 /* MJPropertyKey.m in Sources */,
+				5268586E2EFA8D13005A75A6 /* NSObject+MJKeyValue.m in Sources */,
+				5268586F2EFA8D13005A75A6 /* MJFoundation.m in Sources */,
+				526858702EFA8D13005A75A6 /* NSObject+MJProperty.m in Sources */,
+				526858712EFA8D13005A75A6 /* MJProperty.m in Sources */,
+				526858722EFA8D13005A75A6 /* NSString+MJExtension.m in Sources */,
+				526858732EFA8D13005A75A6 /* NSObject+MJClass.m in Sources */,
+				526858742EFA8D13005A75A6 /* MJPropertyType.m in Sources */,
+				526858752EFA8D13005A75A6 /* NSObject+MJCoding.m in Sources */,
+				526858762EFA8D13005A75A6 /* MJExtensionConst.m in Sources */,
 				1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -479,6 +789,10 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Runner/libs/hztytech_printer_sdk",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.khLogisticsInternalDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -664,6 +978,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Runner/libs/hztytech_printer_sdk",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.khLogisticsInternalDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
@@ -687,6 +1005,10 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Runner/libs/hztytech_printer_sdk",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.khLogisticsInternalDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";

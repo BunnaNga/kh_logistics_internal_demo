@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:kh_logistics_internal_demo/activity/goods_transfer/receipt_print_screen.dart';
+import 'package:kh_logistics_internal_demo/activity/test_channel.dart';
 import 'package:kh_logistics_internal_demo/util/app_color.dart';
 import 'package:kh_logistics_internal_demo/util/locale.dart';
 import 'package:kh_logistics_internal_demo/activity/splash_screen.dart';
@@ -44,6 +46,7 @@ class MyApp extends StatelessWidget {
       ),
 
       home: const SplashScreen(),
+      // home: const TestChannel(),
     );
   }
 }
