@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
@@ -10,7 +11,7 @@ import 'package:kh_logistics_internal_demo/util/value_statics.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:flutter/services.dart'
-    show MethodChannel, PlatformException, rootBundle;
+    show MethodCall, MethodChannel, PlatformException, rootBundle;
 import 'package:image/image.dart' as img;
 
 class ReceiptPrintScreen extends StatefulWidget {
@@ -27,6 +28,8 @@ class _ReceiptPrintScreenState extends State<ReceiptPrintScreen> {
   ScreenshotController screenshotControllerReceipt = ScreenshotController();
   late List<ScreenshotController> qrControllers;
   bool? isConnected;
+  bool isCompletedReceipt = false;
+  ValueNotifier<int> progressNotifier = ValueNotifier(0);
 
   static const platform =
       MethodChannel('com.example.kh_logistics_internal_demo/bluetooth');
@@ -39,15 +42,16 @@ class _ReceiptPrintScreenState extends State<ReceiptPrintScreen> {
   ) async {
     try {
       // Call native method and await the result
-      final Uint8List? result = await platform.invokeMethod<Uint8List>(
+      // final Uint8List? result =
+      await platform.invokeMethod<Uint8List>(
         'sendImageReceipt',
         {
           'receipt': bitmapReceipt,
         },
       );
-      setState(() {
-        bytImage = result;
-      });
+      // setState(() {
+      //   bytImage = result;
+      // });
     } on PlatformException catch (e) {
       log("Failed to send bitmap: ${e.message}");
     }
@@ -56,15 +60,16 @@ class _ReceiptPrintScreenState extends State<ReceiptPrintScreen> {
   Future<void> sendDataQr(List<Uint8List> bitmapQr) async {
     try {
       // Call native method and await the result
-      final Uint8List? result = await platform.invokeMethod<Uint8List>(
+      // final Uint8List? result =
+      await platform.invokeMethod<Uint8List>(
         'sendImageQrcode',
         {
           'qrCode': bitmapQr,
         },
       );
-      setState(() {
-        bytImage = result;
-      });
+      // setState(() {
+      //   bytImage = result;
+      // });
     } on PlatformException catch (e) {
       log("Failed to send bitmap: ${e.message}");
     }
@@ -86,9 +91,65 @@ class _ReceiptPrintScreenState extends State<ReceiptPrintScreen> {
     await checkConnection();
   }
 
+  Future<void> _handleNativeCalls(MethodCall call) async {
+    switch (call.method) {
+      case "printProgress":
+        final int progress = (call.arguments['progress'] as num).toInt();
+        progressNotifier.value = progress; // notify the dialog
+        debugPrint("Print progress: $progress%");
+        break;
+
+      case "printCompleted":
+        hideLoadingDialog();
+        debugPrint("Print completed");
+        break;
+    }
+  }
+
+  void showLoadingDialog() {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) {
+        return AlertDialog(
+          backgroundColor: Colors.white,
+          content: Row(
+            children: [
+              Expanded(
+                child: ValueListenableBuilder<int>(
+                  valueListenable: progressNotifier,
+                  builder: (context, value, child) {
+                    return LinearProgressIndicator(
+                        color: AppColor.baseColors, value: value / 100);
+                  },
+                ),
+              ),
+              SizedBox(width: 10),
+              Text('printing_progress'.tr),
+              SizedBox(width: 10),
+              ValueListenableBuilder<int>(
+                valueListenable: progressNotifier,
+                builder: (context, value, child) {
+                  return Text("$value%");
+                },
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  void hideLoadingDialog() {
+    if (Navigator.of(context).canPop()) {
+      Navigator.of(context).pop();
+    }
+  }
+
   @override
   void initState() {
-    // TODO: implement initState\
+    //
+    platform.setMethodCallHandler(_handleNativeCalls);
     checkDevice();
     controllerScale.text = '50';
     scaleSize = double.parse(controllerScale.text) / 100;
@@ -138,31 +199,40 @@ class _ReceiptPrintScreenState extends State<ReceiptPrintScreen> {
                       child: InkWell(
                         onTap: () async {
                           try {
-                            // Capture screenshot
-                            // Uint8List? capturedImageReceipt =
-                            //     await screenshotControllerReceipt.capture(
-                            //   delay: const Duration(milliseconds: 10),
-                            // );
-
-                            // if (capturedImageReceipt != null) {
-                            //   await sendDataReceipt(
-                            //     capturedImageReceipt,
-                            //   );
-                            // }
-
-                            List<Uint8List> listQr = [];
-
-                            for (int i = 0; i < qrControllers.length; i++) {
-                              final Uint8List? qrImage =
-                                  await qrControllers[i].capture(
-                                delay: const Duration(milliseconds: 10),
-                              );
-
-                              if (qrImage != null) {
-                                listQr.add(qrImage);
-                              }
+                            Uint8List? capturedImageReceipt =
+                                await screenshotControllerReceipt.capture(
+                                    // delay: const Duration(milliseconds: 10),
+                                    );
+                            if (Platform.isIOS) {
+                              showLoadingDialog();
                             }
-                            await sendDataQr(listQr);
+                            if (capturedImageReceipt != null) {
+                              log('Start receipt');
+                              sendDataReceipt(
+                                capturedImageReceipt,
+                              );
+                            }
+
+                            Future.delayed(const Duration(seconds: 5),
+                                () async {
+                              log("Start qrcode");
+                              // Capture screenshot
+                              List<Uint8List> listQr = [];
+
+                              for (int i = 0; i < qrControllers.length; i++) {
+                                final Uint8List? qrImage =
+                                    await qrControllers[i].capture(
+                                        // delay: const Duration(milliseconds: 10),
+                                        );
+
+                                if (qrImage != null) {
+                                  listQr.add(qrImage);
+                                }
+                              }
+                              if (listQr.isNotEmpty) {
+                                sendDataQr(listQr);
+                              }
+                            });
                           } catch (e) {
                             log(e.toString());
                           }

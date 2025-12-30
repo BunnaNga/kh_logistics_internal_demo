@@ -29,8 +29,8 @@ import CoreBluetooth
                 result(Kmbluetooth.shareTools().connectStatus())
                 
             case "openBluetoothAdapter":
-                self.deviceArray.removeAll()
-                self.deviceNameArray.removeAll()
+//                self.deviceArray.removeAll()
+//                self.deviceNameArray.removeAll()
                 Kmbluetooth.shareTools().openBluetoothAdapter { state in
                     print("Adapter has been opened")
                     
@@ -38,9 +38,6 @@ import CoreBluetooth
                         self.deviceArray.append(peripheral)
                         self.deviceNameArray.append(peripheral.name ?? "")
                         print("name", peripheral.name ?? "")
-//                        result(self.deviceNameArray)
-//                        Kmbluetooth.shareTools().stopBluetoothDevicesDiscovery();
-                        
                     }
                 }
                 
@@ -98,18 +95,35 @@ import CoreBluetooth
                     result(FlutterError(code: "IMAGE_CONVERSION_FAILED", message: "Failed to convert data to UIImage", details: nil))
                     return
                 }
+                let printData = KmCase.tspl_caseImage(image)
+                // Send data with progress callback
+                Kmbluetooth.shareTools().writeData(printData,
+                    writeSuccess: { time, dataLength in
+                        print("Printing finished: \(dataLength) bytes in \(time) seconds")
 
-                // Resize and convert to TSPL
-//                let monoImage = resizeImage(image, maxWidth: 384)
-             //   let printData = tspl(width: "60", height: "40", image: image)
+                        // Send completion with labelPrint
+                        bluetoothChannel.invokeMethod("printCompleted", arguments: [
+                            "message": "Printing finished",
+//                            "labelPrint": "Receipt print completed"
+                        ])
+                        result("Printing finished")
+                    },
+                    writeProgress: { progress in
+                        print("Receipt Print progress: \(progress)%")
+
+                        // Send progress with labelPrint
+                        bluetoothChannel.invokeMethod("printProgress", arguments: [
+                            "progress": progress,
+//                            "labelPrint": "Receipt is printing...."
+                        ])
+                    }
+                )
                 
-             //   let printData2 = KmCase.tspl_case2();
-                
-                
-                Kmbluetooth.shareTools().writeData(KmCase.tspl_caseImage(image)) { progress, status in
-                    print("Print success! progress: \(progress), status: \(status)")
-                   // result("Image printed successfully")
-                }
+//                Kmbluetooth.shareTools().writeData(KmCase.tspl_caseImage(image)) { progress, status in
+//                    print("Print success! progress: \(progress), status: \(status)")
+//                   // result("Image printed successfully")
+//                }
+
             case "sendImageQrcode":
                 guard
                     let args = call.arguments as? [String: Any],
@@ -124,15 +138,50 @@ import CoreBluetooth
                 }
 
 //                var images: [UIImage] = []
-
-                for item in qrCodeList {
+                for (index, item) in qrCodeList.enumerated() {
                     let data = item.data
                     if let image = UIImage(data: data) {
-//                        images.append(image)
-                        Kmbluetooth.shareTools().writeData(KmCase.tspl_caseImage(image)) { progress, status in
-                            print("Print success! progress: \(progress), status: \(status)")}
+                        let printData = KmCase.tspl_caseImage(image)
+                        // Send data with progress callback
+                        Kmbluetooth.shareTools().writeData(printData,
+                            writeSuccess: { time, dataLength in
+                                print("Printing finished: \(dataLength) bytes in \(time) seconds")
+
+                                // Send completion with labelPrint
+                                bluetoothChannel.invokeMethod("printCompleted"
+                                                              , arguments: [
+                                    "message": "Printing finished",
+//                                    "labelPrint": "Qrcode \(index + 1) print completed"
+                                ]
+                                )
+                                result("Printing finished")
+                            },
+                            writeProgress: { progress in
+                                print("Qrcode Print progress: \(progress)%")
+
+                                // Send progress with labelPrint
+                                bluetoothChannel.invokeMethod("printProgress", arguments: [
+                                    "progress": progress,
+//                                    "labelPrint": "Qrcode \(index + 1) is printing...."
+                                ])
+                            }
+                        )
                     }
                 }
+
+//                for item in qrCodeList {
+//                    let data = item.data
+//                    if let image = UIImage(data: data) {
+////                        images.append(image)
+//                        Kmbluetooth.shareTools().writeData(KmCase.tspl_caseImage(image)) { progress, status in
+//                            print("Print success! progress: \(progress), status: \(status)")}writeProgress: { progress in
+//                                <#code#>
+//                                print("print progress",progress)
+//                            }
+//                        
+//                        
+//                    }
+//                }
                 
   
 //                let imageData = getImage.data

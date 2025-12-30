@@ -16,7 +16,7 @@ class _BluetoothScreenState extends State<BluetoothScreen> {
   List<String> bluetoothDevices = [];
   static const platform =
       MethodChannel('com.example.kh_logistics_internal_demo/bluetooth');
-  bool isOpen = true;
+  bool? isOpen;
   String? bluetoothConnection;
   // Future<void> getBluetoothList() async {
   //   try {
@@ -111,6 +111,8 @@ class _BluetoothScreenState extends State<BluetoothScreen> {
 
   @override
   void initState() {
+    // bluetoothDevices.clear(); // clear old devices
+    isOpen = true;
     if (Platform.isIOS) {
       openBluetoothAdapter();
       checkBlue();
@@ -119,6 +121,12 @@ class _BluetoothScreenState extends State<BluetoothScreen> {
     }
     // TODO: implement initState
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    isOpen = false; // stop the iOS scanning loop when screen is closed
+    super.dispose();
   }
 
   @override
