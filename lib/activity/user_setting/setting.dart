@@ -21,7 +21,7 @@ class _SettingState extends State<Setting> {
           Data.fromJson({
             "code": "BBP-0072512-000049",
             "destFrom": "សាខា ផ្សារឈូកមាស",
-            "destTo": "សាខាក្រាំងធ្វើក្នុង(បុរីវ៉ារីណា)",
+            "destTo": "សាខាក្រាំងធ្នុង(បុរីវ៉ារីណា)",
             "senderTel": "015644233",
             "receiverTel": "089655234",
             "transferFee": "1.0",

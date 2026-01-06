@@ -71,6 +71,11 @@ class GoodsTransferRequest {
         }
       ]
     });
+    // Log request info before sending
+    log('--- Goods Transfer Add Request ---');
+    log('URL: $url');
+    log('Headers: $headers');
+    log('Body: $body');
 
     final response = await http.post(url, headers: headers, body: body);
 

@@ -552,8 +552,9 @@ class _GoodsInformationState extends State<GoodsInformation> {
 
                           GoodsTransferAddRespone respone =
                               await GoodsTransferRequest().goodsTransferAdd(
-                            destinationFromId: 2,
-                            destinationToId: 3,
+                            destinationFromId:
+                                ValueStatics.destinationFromId ?? 0,
+                            destinationToId: ValueStatics.destinationToId ?? 0,
                             senderName: ValueStatics.senderName,
                             senderTelephone: ValueStatics.senderTelephone,
                             receiverName: ValueStatics.receiverName,
@@ -627,5 +628,15 @@ class _GoodsInformationState extends State<GoodsInformation> {
           int.parse(qtyController.text) * int.parse(unitFeeController.text);
       totalFeeController.text = amount.toString();
     }
+  }
+
+  @override
+  void dispose() {
+    ValueStatics.itemType = '';
+    ValueStatics.itemTypeId = null;
+    ValueStatics.currencySymbol = '\$';
+    ValueStatics.currencyId = 1;
+
+    super.dispose();
   }
 }

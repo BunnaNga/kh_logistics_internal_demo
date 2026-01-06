@@ -1,8 +1,12 @@
+import 'dart:developer';
+import 'dart:math' as math;
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kh_logistics_internal_demo/activity/destination_screen.dart';
 import 'package:kh_logistics_internal_demo/activity/select_branch.dart';
-import 'package:kh_logistics_internal_demo/activity/move_item_to_van/input_or_scan_item_to_van.dart';
+import 'package:kh_logistics_internal_demo/activity/input_or_scan_item.dart';
 import 'package:kh_logistics_internal_demo/activity/select_van.dart';
 import 'package:kh_logistics_internal_demo/util/app_color.dart';
 import 'package:kh_logistics_internal_demo/util/value_statics.dart';
@@ -21,8 +25,19 @@ class _MoveItemToVanState extends State<MoveItemToVan> {
   bool goodsOut = false;
   bool all = false;
 
+  String generateSysCode({int length = 10}) {
+    const chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
+    final rand = Random.secure();
+
+    return List.generate(
+      length,
+      (_) => chars[rand.nextInt(chars.length)],
+    ).join();
+  }
+
   @override
   initState() {
+    // log('Generated sys code: ${generateSysCode()}');
     super.initState();
   }
 
@@ -133,40 +148,49 @@ class _MoveItemToVanState extends State<MoveItemToVan> {
               Text('item_type'.tr, style: TextStyle(fontSize: 16)),
               SizedBox(height: 10),
 
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              Column(
                 children: [
-                  InkWell(
-                    onTap: () {
-                      _onGoodsInChanged(true);
-                    },
-                    child: Row(
-                      children: [
-                        Icon(
-                            goodsIn
-                                ? Icons.check_box // when true
-                                : Icons.check_box_outline_blank,
-                            color: goodsIn ? AppColor.baseColors : Colors.grey),
-                        Text('goods_in'.tr)
-                      ],
-                    ),
+                  Row(
+                    // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          _onGoodsInChanged(true);
+                        },
+                        child: Row(
+                          children: [
+                            Icon(
+                                goodsIn
+                                    ? Icons.check_box // when true
+                                    : Icons.check_box_outline_blank,
+                                color: goodsIn
+                                    ? AppColor.baseColors
+                                    : Colors.grey),
+                            Text('goods_in'.tr)
+                          ],
+                        ),
+                      ),
+                      SizedBox(width: 40),
+                      InkWell(
+                        onTap: () {
+                          _onGoodsOutChanged(true);
+                        },
+                        child: Row(
+                          children: [
+                            Icon(
+                                goodsOut
+                                    ? Icons.check_box // when true
+                                    : Icons.check_box_outline_blank,
+                                color: goodsOut
+                                    ? AppColor.baseColors
+                                    : Colors.grey),
+                            Text('goods_out'.tr)
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
-                  InkWell(
-                    onTap: () {
-                      _onGoodsOutChanged(true);
-                    },
-                    child: Row(
-                      children: [
-                        Icon(
-                            goodsOut
-                                ? Icons.check_box // when true
-                                : Icons.check_box_outline_blank,
-                            color:
-                                goodsOut ? AppColor.baseColors : Colors.grey),
-                        Text('goods_out'.tr)
-                      ],
-                    ),
-                  ),
+                  SizedBox(height: 20),
                   InkWell(
                     onTap: () {
                       _onAllChanged(true);
@@ -187,19 +211,21 @@ class _MoveItemToVanState extends State<MoveItemToVan> {
               SizedBox(height: 20),
               Text('destination_to'.tr, style: TextStyle(fontSize: 16)),
               InkWell(
-                onTap: () async {
-                  final result = await Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => DestinationScreen(
-                              destinationTitle: 'destination_to'.tr,
-                              destinationType: 2,
-                            )),
-                  );
-                  if (result != null) {
-                    setState(() {});
-                  }
-                },
+                onTap: all == false
+                    ? () async {
+                        final result = await Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => DestinationScreen(
+                                    destinationTitle: 'destination_to'.tr,
+                                    destinationType: 2,
+                                  )),
+                        );
+                        if (result != null) {
+                          setState(() {});
+                        }
+                      }
+                    : null,
                 child: Container(
                   height: 40,
                   width: double.infinity,
@@ -309,10 +335,31 @@ class _MoveItemToVanState extends State<MoveItemToVan> {
                   alignment: Alignment.center,
                   child: InkWell(
                     onTap: () {
+                      // required this.date,
+                      // required this.branchId,
+                      // required this.destinationToId,
+                      // this.vanId,
+                      // this.departureTime,
+                      // this.scanCode,
+                      // this.sysCode,
+                      // this.type,
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => InputOrScanItemToVan()),
+                            builder: (context) => InputOrScanItem(
+                                  moveType: 1,
+                                  date:
+                                      '${selectedDate!.year}-${selectedDate!.month.toString().padLeft(2, '0')}-${selectedDate!.day.toString().padLeft(2, '0')}',
+                                  branchId: ValueStatics.destinationFromId ?? 0,
+                                  destinationToId: all != true
+                                      ? ValueStatics.destinationToId ?? 0
+                                      : 0,
+                                  vanId: ValueStatics.vanId ?? 0,
+                                  departureTime:
+                                      '${selectedTime.hour.toString().padLeft(2, '0')}:${selectedTime.minute.toString().padLeft(2, '0')}:00',
+                                  sysCode: generateSysCode(),
+                                  type: goodsIn == true ? 1 : 2,
+                                )),
                       );
                     },
                     child: Container(
@@ -415,44 +462,24 @@ class _MoveItemToVanState extends State<MoveItemToVan> {
 
   void _onAllChanged(bool? value) {
     setState(() {
-      if (all == true && value == true) {
-        // toggle off
-        goodsOut = false;
-        goodsIn = false;
-        all = false;
-      } else {
-        // toggle on
-        all = true;
-        goodsOut = false;
-        goodsIn = false;
-      }
+      all = !all;
     });
   }
 
   void _onGoodsInChanged(bool? value) {
     setState(() {
-      if (goodsIn == true && value == true) {
+      goodsIn = !goodsIn;
+      if (goodsIn) {
         goodsOut = false;
-        goodsIn = false;
-        all = false;
-      } else {
-        goodsIn = true;
-        goodsOut = false;
-        all = false;
       }
     });
   }
 
   void _onGoodsOutChanged(bool? value) {
     setState(() {
-      if (goodsOut == true && value == true) {
-        goodsOut = false;
+      goodsOut = !goodsOut;
+      if (goodsOut) {
         goodsIn = false;
-        all = false;
-      } else {
-        goodsOut = true;
-        goodsIn = false;
-        all = false;
       }
     });
   }

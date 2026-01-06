@@ -5,6 +5,7 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kh_logistics_internal_demo/activity/goods_transfer/bluetooth.dart';
+import 'package:kh_logistics_internal_demo/activity/menu_screen.dart';
 import 'package:kh_logistics_internal_demo/models/goods_transfer/goods_transfer_add_respone.dart';
 import 'package:kh_logistics_internal_demo/util/app_color.dart';
 import 'package:kh_logistics_internal_demo/util/value_statics.dart';
@@ -428,236 +429,252 @@ class _ReceiptPrintScreenState extends State<ReceiptPrintScreen> {
                           ),
                         ],
                       ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 5),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  SizedBox(
+                                    height: 29,
+                                    child: Image.asset(
+                                        "assets/images/kh_logistic_logo.png"),
+                                  ),
+                                  Column(
+                                    children: [
+                                      Text(
+                                        'KH Logistics',
+                                        style: TextStyle(
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      Text('វិក័យបត្រ'),
+                                      Text('VAT: 0123456789'),
+                                    ],
+                                  ),
+                                  QrImageView(
+                                    data: '${widget.data.code}',
+                                    version: QrVersions.auto,
+                                    size: 80.0,
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Text(
+                              '#KH-LOGISTICS-0007',
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            Row(
                               children: [
-                                SizedBox(
-                                  height: 29,
-                                  child: Image.asset(
-                                      "assets/images/kh_logistic_logo.png"),
+                                Text(
+                                  'លេខវិក័យបត្រ: ',
                                 ),
-                                Column(
-                                  children: [
-                                    Text(
-                                      'KH Logistics',
-                                      style: TextStyle(
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    Text('វិក័យបត្រ'),
-                                    Text('VAT: 0123456789'),
-                                  ],
-                                ),
-                                QrImageView(
-                                  data: '${widget.data.code}',
-                                  version: QrVersions.auto,
-                                  size: 80.0,
+                                Text(
+                                  '${widget.data.code}',
                                 ),
                               ],
                             ),
-                          ),
-                          Text(
-                            '#KH-LOGISTICS-0007',
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                          Row(
-                            children: [
-                              Text(
-                                'លេខវិក័យបត្រ: ',
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width,
+                              child: Text(
+                                'គោលដៅ: ${widget.data.destFrom} -> ${widget.data.destTo}',
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 2,
                               ),
-                              Text(
-                                '${widget.data.code}',
-                              ),
-                            ],
-                          ),
-                          SizedBox(
-                            width: MediaQuery.of(context).size.width,
-                            child: Text(
-                              'គោលដៅ: ${widget.data.destFrom} -> ${widget.data.destTo}',
-                              overflow: TextOverflow.ellipsis,
-                              maxLines: 2,
                             ),
-                          ),
-                          Row(
-                            children: [
-                              Text(
-                                'កាលបរិច្ឆេទ: ',
-                              ),
-                              Text(
-                                '${widget.data.printDate}',
-                              ),
-                            ],
-                          ),
-                          Table(
-                            border: const TableBorder(
-                              left: BorderSide(color: Colors.black, width: 1),
-                              right: BorderSide(color: Colors.black, width: 1),
-                              top: BorderSide(color: Colors.black, width: 1),
-
-                              // NO bottom border
-                              bottom: BorderSide.none,
-                              horizontalInside: BorderSide.none,
-                              verticalInside: BorderSide.none,
+                            Row(
+                              children: [
+                                Text(
+                                  'កាលបរិច្ឆេទ: ',
+                                ),
+                                Text(
+                                  '${widget.data.printDate}',
+                                ),
+                              ],
                             ),
-                            children: [
-                              TableRow(
-                                children: [
-                                  SizedBox(
-                                      width: MediaQuery.of(context).size.width,
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            'លេខអ្នកផ្ញើ: ${widget.data.senderTel}',
-                                          ),
-                                          Text(
-                                              "លេខកអ្នកទទួល: ${widget.data.receiverTel}"),
-                                        ],
-                                      )),
-                                  // Center(child: Text('Quantity')),
-                                ],
-                              )
-                            ],
-                          ),
-                          Table(
-                            border: TableBorder.all(),
-                            children: [
-                              // TableCell(child: Center(child: Text('Item'))),
+                            Table(
+                              border: const TableBorder(
+                                left: BorderSide(color: Colors.black, width: 1),
+                                right:
+                                    BorderSide(color: Colors.black, width: 1),
+                                top: BorderSide(color: Colors.black, width: 1),
 
-                              TableRow(
-                                children: [
-                                  SizedBox(
-                                    height: 50,
-                                    child: Column(
-                                      children: [
-                                        Text('ទំនិញ'),
-                                        Text('(តម្លៃ1ឯកតា)')
-                                      ],
+                                // NO bottom border
+                                bottom: BorderSide.none,
+                                horizontalInside: BorderSide.none,
+                                verticalInside: BorderSide.none,
+                              ),
+                              children: [
+                                TableRow(
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 5, right: 5),
+                                      child: SizedBox(
+                                          width:
+                                              MediaQuery.of(context).size.width,
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Text(
+                                                'លេខអ្នកផ្ញើ: ${widget.data.senderTel}',
+                                                style: TextStyle(fontSize: 12),
+                                              ),
+                                              Text(
+                                                "លេខកអ្នកទទួល: ${widget.data.receiverTel}",
+                                                style: TextStyle(fontSize: 12),
+                                              ),
+                                            ],
+                                          )),
                                     ),
-                                  ),
-                                  SizedBox(
-                                    height: 50,
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(left: 8),
+                                    // Center(child: Text('Quantity')),
+                                  ],
+                                )
+                              ],
+                            ),
+                            Table(
+                              border: TableBorder.all(),
+                              children: [
+                                // TableCell(child: Center(child: Text('Item'))),
+
+                                TableRow(
+                                  children: [
+                                    SizedBox(
+                                      height: 50,
                                       child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
                                         children: [
-                                          Text(
-                                              '${widget.data.printItemLayoutList?[0].itemQty}(${widget.data.printItemLayoutList?[0].itemFee ?? ''})'),
+                                          Text('ទំនិញ'),
+                                          Text('(តម្លៃ1ឯកតា)')
                                         ],
                                       ),
                                     ),
-                                  ),
-                                ],
-                              ),
-                              TableRow(
-                                children: [
-                                  Center(child: Text('សម្គាល់')),
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 8.0),
-                                    child: Text(
-                                        '${ValueStatics.itemType} ${widget.data.printItemLayoutList?[0].itemName}'),
-                                  ),
-                                ],
-                              ),
-                              TableRow(
-                                children: [
-                                  Center(child: Text('តម្លៃសេវា')),
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 8.0),
-                                    child: Text(
-                                        '${widget.data.transferFee}${"៛"} (ទូទាត់រួចរាល់)'),
-                                  ),
-                                ],
-                              ),
-                              TableRow(
-                                children: [
-                                  Center(child: Text('តម្លៃសរុប')),
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 8.0),
-                                    child:
-                                        Text('${widget.data.totalFee}${"៛"}'),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                          Text(
-                            'បោះពុម្ភ:${widget.data.printDate}(${widget.data.printBy}) ចេញដោយ: ${widget.data.printBy}',
-                            style: TextStyle(fontSize: 12),
-                          ),
-                          SizedBox(height: 5),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              SizedBox(
-                                width:
-                                    MediaQuery.of(context).size.width * 0.9 / 2,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      '${widget.data.destFrom}',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    Text(
-                                      '${widget.data.senderTel}',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold),
+                                    SizedBox(
+                                      height: 50,
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(left: 8),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                                '${widget.data.printItemLayoutList?[0].itemQty}(${widget.data.printItemLayoutList?[0].itemFee ?? ''})'),
+                                          ],
+                                        ),
+                                      ),
                                     ),
                                   ],
                                 ),
-                              ),
-                              SizedBox(
-                                width: MediaQuery.of(context).size.width / 2,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                TableRow(
                                   children: [
-                                    Text(
-                                      '${widget.data.destTo}',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    Text(
-                                      '${widget.data.receiverTel}',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold),
+                                    Center(child: Text('សម្គាល់')),
+                                    Padding(
+                                      padding: const EdgeInsets.only(left: 8.0),
+                                      child: Text(
+                                          '${ValueStatics.itemType} ${widget.data.printItemLayoutList?[0].itemName}'),
                                     ),
                                   ],
                                 ),
-                              )
-                            ],
-                          ),
-                          SizedBox(height: 5),
-                          Text(
-                            '១- មិនទទួលខុសត្រូវទំនិញងាយបែកបាក់ ឬ ខូចគុណភាព។',
-                            style: TextStyle(fontSize: 10),
-                          ),
-                          Text(
-                            '២- មិនទទួលបញ្ញើទំនិញខុសច្បាប់គ្រប់ប្រភេទ។',
-                            style: TextStyle(fontSize: 10),
-                          ),
-                          Text(
-                            '៣- មិនទទួលបញ្ញើទំនិញងាយបង្កគ្រោះថ្នាក់។',
-                            style: TextStyle(fontSize: 10),
-                          ),
-                          Text(
-                            '៤-បញ្ញើបាត់បង់ ក្រុមហ៊ុនទទួលសង ២០ដងនៃតម្លៃសេវាបញ្ញើ!ខូចខាត១៥ដង នៃតម្លៃបញ្ញើ។',
-                            style: TextStyle(fontSize: 10),
-                          ),
-                          SizedBox(height: 10),
-                        ],
+                                TableRow(
+                                  children: [
+                                    Center(child: Text('តម្លៃសេវា')),
+                                    Padding(
+                                      padding: const EdgeInsets.only(left: 8.0),
+                                      child: Text(
+                                          '${widget.data.transferFee}${"៛"} (ទូទាត់រួចរាល់)'),
+                                    ),
+                                  ],
+                                ),
+                                TableRow(
+                                  children: [
+                                    Center(child: Text('តម្លៃសរុប')),
+                                    Padding(
+                                      padding: const EdgeInsets.only(left: 8.0),
+                                      child:
+                                          Text('${widget.data.totalFee}${"៛"}'),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            Text(
+                              'បោះពុម្ភ:${widget.data.printDate}(${widget.data.printBy}) ចេញដោយ: ${widget.data.printBy}',
+                              style: TextStyle(fontSize: 12),
+                            ),
+                            SizedBox(height: 5),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                SizedBox(
+                                  width: MediaQuery.of(context).size.width *
+                                      0.9 /
+                                      2,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        '${widget.data.destFrom}',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      Text(
+                                        '${widget.data.senderTel}',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: MediaQuery.of(context).size.width / 2,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        '${widget.data.destTo}',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      Text(
+                                        '${widget.data.receiverTel}',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
+                                  ),
+                                )
+                              ],
+                            ),
+                            SizedBox(height: 5),
+                            Text(
+                              '១- មិនទទួលខុសត្រូវទំនិញងាយបែកបាក់ ឬ ខូចគុណភាព។',
+                              style: TextStyle(fontSize: 10),
+                            ),
+                            Text(
+                              '២- មិនទទួលបញ្ញើទំនិញខុសច្បាប់គ្រប់ប្រភេទ។',
+                              style: TextStyle(fontSize: 10),
+                            ),
+                            Text(
+                              '៣- មិនទទួលបញ្ញើទំនិញងាយបង្កគ្រោះថ្នាក់។',
+                              style: TextStyle(fontSize: 10),
+                            ),
+                            Text(
+                              '៤-បញ្ញើបាត់បង់ ក្រុមហ៊ុនទទួលសង ២០ដងនៃតម្លៃសេវាបញ្ញើ!ខូចខាត១៥ដង នៃតម្លៃបញ្ញើ។',
+                              style: TextStyle(fontSize: 10),
+                            ),
+                            SizedBox(height: 10),
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -788,7 +805,12 @@ class _ReceiptPrintScreenState extends State<ReceiptPrintScreen> {
           height: 50, // match width and height for circle
           child: FloatingActionButton(
             onPressed: () {
-              Navigator.pop(context);
+              Navigator.popUntil(context, (route) => route.isFirst);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const MenuScreen()),
+              );
+              // Navigator.pop(context);
             },
             backgroundColor: AppColor.baseColors,
             child: Text("close".tr,

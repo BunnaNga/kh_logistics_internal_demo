@@ -1,6 +1,9 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kh_logistics_internal_demo/activity/destination_screen.dart';
+import 'package:kh_logistics_internal_demo/activity/input_or_scan_item.dart';
 import 'package:kh_logistics_internal_demo/activity/select_van.dart';
 import 'package:kh_logistics_internal_demo/util/app_color.dart';
 import 'package:kh_logistics_internal_demo/util/value_statics.dart';
@@ -16,6 +19,16 @@ class _MoveItemFromVanState extends State<MoveItemFromVan> {
   DateTime? selectedDate = DateTime.now();
   TimeOfDay selectedTime = TimeOfDay.now();
   bool all = false;
+
+  String generateSysCode({int length = 10}) {
+    const chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
+    final rand = Random.secure();
+
+    return List.generate(
+      length,
+      (_) => chars[rand.nextInt(chars.length)],
+    ).join();
+  }
 
   @override
   void dispose() {
@@ -187,11 +200,18 @@ class _MoveItemFromVanState extends State<MoveItemFromVan> {
                   alignment: Alignment.center,
                   child: InkWell(
                     onTap: () {
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //       builder: (context) => InputOrScanItemToVan()),
-                      // );
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => InputOrScanItem(
+                                  moveType: 2,
+                                  date:
+                                      '${selectedDate!.year}-${selectedDate!.month.toString().padLeft(2, '0')}-${selectedDate!.day.toString().padLeft(2, '0')}',
+                                  branchId: ValueStatics.destinationFromId ?? 0,
+                                  vanId: all ? 0 : ValueStatics.vanId ?? 0,
+                                  sysCode: generateSysCode(),
+                                )),
+                      );
                     },
                     child: Container(
                       height: 40,

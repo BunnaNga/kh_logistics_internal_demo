@@ -1,0 +1,255 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:kh_logistics_internal_demo/activity/destination_screen.dart';
+import 'package:kh_logistics_internal_demo/util/app_color.dart';
+import 'package:kh_logistics_internal_demo/util/value_statics.dart';
+
+class ReportAgencySend extends StatefulWidget {
+  const ReportAgencySend({super.key});
+
+  @override
+  State<ReportAgencySend> createState() => _ReportAgencySendState();
+}
+
+class _ReportAgencySendState extends State<ReportAgencySend> {
+  DateTime? selectedDateFrom;
+  DateTime? selectedDateTo;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('របាយការណ៍កំរៃជើងសារ(ផ្ញើ)'),
+      ),
+      body: Padding(
+        padding:
+            const EdgeInsets.only(left: 20, right: 20, top: 30, bottom: 20),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              '${'from'.tr} *',
+              style: TextStyle(fontSize: 16),
+            ),
+            InkWell(
+              onTap: () {
+                _selectDateFrom();
+              },
+              child: Container(
+                height: 40,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: Colors.white, // optional background color
+                  borderRadius: BorderRadius.circular(5),
+                  border: Border.all(
+                    color: AppColor.baseColors, // yellow border
+                    width: 2, // thickness of border
+                  ),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 8, right: 8),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(selectedDateFrom == null
+                          ? 'please_select'.tr
+                          : '${selectedDateFrom!.year}-${selectedDateFrom!.month}-${selectedDateFrom!.day}'),
+                      Icon(
+                        Icons.calendar_month_outlined,
+                        size: 25,
+                        color: AppColor.baseColors,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 10),
+              child: Text(
+                '${'to'.tr} *',
+                style: TextStyle(fontSize: 16),
+              ),
+            ),
+            InkWell(
+              onTap: () {
+                _selectDateTo();
+              },
+              child: Container(
+                height: 40,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: Colors.white, // optional background color
+                  borderRadius: BorderRadius.circular(5),
+                  border: Border.all(
+                    color: AppColor.baseColors, // yellow border
+                    width: 2, // thickness of border
+                  ),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 8, right: 8),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(selectedDateTo == null
+                          ? 'please_select'.tr
+                          : '${selectedDateTo!.year}-${selectedDateTo!.month}-${selectedDateTo!.day}'),
+                      Icon(
+                        Icons.calendar_month_outlined,
+                        size: 25,
+                        color: AppColor.baseColors,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 30),
+              child: Row(
+                children: [
+                  Text('branch'.tr),
+                  SizedBox(width: 5),
+                  Text(
+                    '*',
+                    style: TextStyle(color: AppColor.baseColors),
+                  ),
+                ],
+              ),
+            ),
+            InkWell(
+              onTap: () async {
+                final result = await Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => DestinationScreen(
+                            destinationType: 1,
+                            destinationTitle: 'Destination From',
+                          )),
+                );
+                if (result != null) {
+                  setState(() {});
+                }
+              },
+              child: Container(
+                height: 40,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: Colors.white, // optional background color
+                  borderRadius: BorderRadius.circular(5),
+                  border: Border.all(
+                    color: AppColor.baseColors, // yellow border
+                    width: 2, // thickness of border
+                  ),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 8, right: 8),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(ValueStatics.destinationFromTitle.isEmpty
+                          ? 'please_select'.tr
+                          : ValueStatics.destinationFromTitle),
+                      Icon(
+                        Icons.arrow_forward_ios,
+                        size: 15,
+                        color: AppColor.baseColors,
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            Spacer(),
+            Align(
+                alignment: Alignment.center,
+                child: InkWell(
+                  onTap: () {},
+                  child: Container(
+                    height: 40,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                        color: AppColor.baseColors,
+                        borderRadius: BorderRadius.circular(20)),
+                    child: Center(
+                      child: Text(
+                        'search'.tr,
+                        style: TextStyle(
+                            color: AppColor.whiteTextColor,
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
+                )),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Future<void> _selectDateFrom() async {
+    final DateTime? pickedDate = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(DateTime.now().year),
+      lastDate: DateTime(DateTime.now().year + 1),
+      builder: (BuildContext context, Widget? child) {
+        return Theme(
+          data: Theme.of(context).copyWith(
+            useMaterial3: false,
+            colorScheme: ColorScheme.light(
+              primary: AppColor.baseColors, // Header background color
+              onPrimary: Colors.white, // Header text color
+              onSurface: Colors.black, // Body text color
+            ),
+            textButtonTheme: TextButtonThemeData(
+              style: TextButton.styleFrom(
+                foregroundColor: AppColor.baseColors, // Button text color
+              ),
+            ),
+          ),
+          child: child!,
+        );
+      },
+    );
+    if (pickedDate != null) {
+      setState(() {
+        selectedDateFrom = pickedDate;
+      });
+    }
+  }
+
+  Future<void> _selectDateTo() async {
+    final DateTime? pickedDate = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(DateTime.now().year),
+      lastDate: DateTime(DateTime.now().year + 1),
+      builder: (BuildContext context, Widget? child) {
+        return Theme(
+          data: Theme.of(context).copyWith(
+            useMaterial3: false,
+            colorScheme: ColorScheme.light(
+              primary: AppColor.baseColors, // Header background color
+              onPrimary: Colors.white, // Header text color
+              onSurface: Colors.black, // Body text color
+            ),
+            textButtonTheme: TextButtonThemeData(
+              style: TextButton.styleFrom(
+                foregroundColor: AppColor.baseColors, // Button text color
+              ),
+            ),
+          ),
+          child: child!,
+        );
+      },
+    );
+    if (pickedDate != null) {
+      setState(() {
+        selectedDateTo = pickedDate;
+      });
+    }
+  }
+}

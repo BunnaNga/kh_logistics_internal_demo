@@ -27,8 +27,4 @@ class ValueStatics {
 
   // for bluetooth connection
   // static bool? isConnection  = 1;
-
-
-
-
 }
