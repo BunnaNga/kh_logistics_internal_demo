@@ -43,8 +43,12 @@ class _MoveItemToVanState extends State<MoveItemToVan> {
 
   @override
   void dispose() {
-    ValueStatics.destinationFromTitle = '';
+    ValueStatics.branchTitle = '';
+    ValueStatics.branchId = null;
     ValueStatics.destinationToTitle = '';
+    ValueStatics.destinationToId = null;
+    ValueStatics.vanId = null;
+
     ValueStatics.vanName = '';
     super.dispose();
   }
@@ -131,9 +135,9 @@ class _MoveItemToVanState extends State<MoveItemToVan> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(ValueStatics.destinationFromTitle.isEmpty
+                        Text(ValueStatics.branchTitle.isEmpty
                             ? 'please_select'.tr
-                            : ValueStatics.destinationFromTitle),
+                            : ValueStatics.branchTitle),
                         Icon(
                           Icons.arrow_forward_ios,
                           size: 15,
@@ -350,7 +354,7 @@ class _MoveItemToVanState extends State<MoveItemToVan> {
                                   moveType: 1,
                                   date:
                                       '${selectedDate!.year}-${selectedDate!.month.toString().padLeft(2, '0')}-${selectedDate!.day.toString().padLeft(2, '0')}',
-                                  branchId: ValueStatics.destinationFromId ?? 0,
+                                  branchId: ValueStatics.branchId ?? 0,
                                   destinationToId: all != true
                                       ? ValueStatics.destinationToId ?? 0
                                       : 0,

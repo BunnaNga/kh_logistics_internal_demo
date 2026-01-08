@@ -148,7 +148,8 @@ class _InputOrScanItemState extends State<InputOrScanItem> {
                         log('Added item to list to vam : ${result.body!.toJson()}');
                       } else {
                         setState(() {
-                          ShowSingleDialog().showSingleDialog(context);
+                          ShowSingleDialog().showSingleDialog(context,
+                              'error qr code or qrcode have been scanned');
                         });
                         log('No data found in the response for the scanned code.');
                       }
@@ -169,7 +170,8 @@ class _InputOrScanItemState extends State<InputOrScanItem> {
                         log('Added item to list from van : ${result.body!.toJson()}');
                       } else {
                         setState(() {
-                          ShowSingleDialog().showSingleDialog(context);
+                          ShowSingleDialog().showSingleDialog(context,
+                              'error qr code or qrcode have been scanned');
                         });
                         log('No data found in the response for the scanned code.');
                       }

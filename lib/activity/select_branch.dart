@@ -91,12 +91,12 @@ class _BranchScreenState extends State<BranchScreen> {
           final item = listBranch[index];
           return InkWell(
             onTap: () {
-              ValueStatics.destinationFromId = item.id;
-              ValueStatics.destinationFromTitle = item.name ?? '';
+              ValueStatics.branchId = item.id;
+              ValueStatics.branchTitle = item.name ?? '';
               // widget.destinationType == 1
               //     ? ValueStatics.destinationFromTitle = item.name ?? ''
               //     : ValueStatics.destinationToTitle = item.name ?? '';
-              // log('id = ${ValueStatics.destinationFromId}');
+              log('id = ${ValueStatics.branchId}');
               setState(() {});
               Navigator.pop(context, 1);
             },

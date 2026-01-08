@@ -6,6 +6,10 @@ class ValueStatics {
   static String destinationToTitle = '';
   static int deliveryDestinationId = 0;
 
+  // for branch
+  static int? branchId;
+  static String branchTitle = '';
+
   //for item type
   static String itemType = '';
   static int? itemTypeId;

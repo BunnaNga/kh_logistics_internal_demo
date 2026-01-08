@@ -1,25 +1,40 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kh_logistics_internal_demo/activity/destination_screen.dart';
+import 'package:kh_logistics_internal_demo/activity/reports/report_agency_claim.dart';
+import 'package:kh_logistics_internal_demo/activity/reports/report_send_or_receive.dart';
+import 'package:kh_logistics_internal_demo/activity/select_branch.dart';
 import 'package:kh_logistics_internal_demo/util/app_color.dart';
 import 'package:kh_logistics_internal_demo/util/value_statics.dart';
 
-class ReportAgencySend extends StatefulWidget {
-  const ReportAgencySend({super.key});
+class ReportInputData extends StatefulWidget {
+  final String titleAppbar;
+  final int type;
+  const ReportInputData(
+      {super.key, required this.titleAppbar, required this.type});
 
   @override
-  State<ReportAgencySend> createState() => _ReportAgencySendState();
+  State<ReportInputData> createState() => _ReportInputDataState();
 }
 
-class _ReportAgencySendState extends State<ReportAgencySend> {
+class _ReportInputDataState extends State<ReportInputData> {
   DateTime? selectedDateFrom;
   DateTime? selectedDateTo;
+
+  @override
+  void initState() {
+    log('Report Type: ${widget.type}');
+    // TODO: implement initState
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('របាយការណ៍កំរៃជើងសារ(ផ្ញើ)'),
+        title: Text(widget.titleAppbar),
       ),
       body: Padding(
         padding:
@@ -122,11 +137,7 @@ class _ReportAgencySendState extends State<ReportAgencySend> {
               onTap: () async {
                 final result = await Navigator.push(
                   context,
-                  MaterialPageRoute(
-                      builder: (context) => DestinationScreen(
-                            destinationType: 1,
-                            destinationTitle: 'Destination From',
-                          )),
+                  MaterialPageRoute(builder: (context) => BranchScreen()),
                 );
                 if (result != null) {
                   setState(() {});
@@ -148,9 +159,9 @@ class _ReportAgencySendState extends State<ReportAgencySend> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(ValueStatics.destinationFromTitle.isEmpty
+                      Text(ValueStatics.branchTitle.isEmpty
                           ? 'please_select'.tr
-                          : ValueStatics.destinationFromTitle),
+                          : ValueStatics.branchTitle),
                       Icon(
                         Icons.arrow_forward_ios,
                         size: 15,
@@ -165,7 +176,38 @@ class _ReportAgencySendState extends State<ReportAgencySend> {
             Align(
                 alignment: Alignment.center,
                 child: InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    if (widget.type != 3) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute<void>(
+                          builder: (context) => ReportSendOrReceive(
+                            reportType: widget.type,
+                            dateFrom:
+                                '${selectedDateFrom!.year}-${selectedDateFrom!.month.toString().padLeft(2, '0')}-${selectedDateFrom!.day.toString().padLeft(2, '0')}',
+                            dateTo:
+                                '${selectedDateTo!.year}-${selectedDateTo!.month.toString().padLeft(2, '0')}-${selectedDateTo!.day.toString().padLeft(2, '0')}',
+                            branchId: ValueStatics.branchId!,
+                          ),
+                        ),
+                      );
+                    } else {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute<void>(
+                          builder: (context) => ReportAgencyClaim(
+                            reportType: widget.type,
+                            branchTitle: ValueStatics.branchTitle,
+                            dateFrom:
+                                '${selectedDateFrom!.year}-${selectedDateFrom!.month.toString().padLeft(2, '0')}-${selectedDateFrom!.day.toString().padLeft(2, '0')}',
+                            dateTo:
+                                '${selectedDateTo!.year}-${selectedDateTo!.month.toString().padLeft(2, '0')}-${selectedDateTo!.day.toString().padLeft(2, '0')}',
+                            branchId: ValueStatics.branchId!,
+                          ),
+                        ),
+                      );
+                    }
+                  },
                   child: Container(
                     height: 40,
                     width: double.infinity,
@@ -193,7 +235,7 @@ class _ReportAgencySendState extends State<ReportAgencySend> {
     final DateTime? pickedDate = await showDatePicker(
       context: context,
       initialDate: DateTime.now(),
-      firstDate: DateTime(DateTime.now().year),
+      firstDate: DateTime(DateTime.now().year - 1),
       lastDate: DateTime(DateTime.now().year + 1),
       builder: (BuildContext context, Widget? child) {
         return Theme(
@@ -251,5 +293,13 @@ class _ReportAgencySendState extends State<ReportAgencySend> {
         selectedDateTo = pickedDate;
       });
     }
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    ValueStatics.branchTitle = '';
+    ValueStatics.branchId = null;
+    super.dispose();
   }
 }

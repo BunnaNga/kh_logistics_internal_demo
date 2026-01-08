@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:kh_logistics_internal_demo/util/app_color.dart';
 
 class ShowSingleDialog {
-  Future<void> showSingleDialog(BuildContext context) {
+  Future<void> showSingleDialog(BuildContext context, String content) {
     return showDialog<void>(
       context: context,
       barrierDismissible: false, // user must tap button
@@ -11,10 +11,10 @@ class ShowSingleDialog {
         return AlertDialog(
           backgroundColor: AppColor.background_color,
           title: Text('notification'.tr),
-          content: const SingleChildScrollView(
+          content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
-                Text('error qr code or qrcode have been scanned'),
+                Text("$content"),
               ],
             ),
           ),

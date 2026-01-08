@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kh_logistics_internal_demo/activity/customer_receive/customer_receive.dart';
+import 'package:kh_logistics_internal_demo/activity/customer_receive/customer_receive_scan.dart';
 import 'package:kh_logistics_internal_demo/activity/goods_transfer/goods_transfer.dart';
 import 'package:kh_logistics_internal_demo/activity/move_item_from_van/move_item_from_van.dart';
 import 'package:kh_logistics_internal_demo/activity/move_item_to_van/move_item_to_van.dart';
@@ -45,7 +45,7 @@ class _MenuScreenState extends State<MenuScreen> {
     GoodsTransferScreen(),
     MoveItemToVan(),
     MoveItemFromVan(),
-    CustomerReceive(),
+    CustomerReceiveScan(),
     Reports(),
   ];
   @override

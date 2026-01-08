@@ -4,17 +4,20 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kh_logistics_internal_demo/activity/menu_screen.dart';
+import 'package:kh_logistics_internal_demo/api/customer_receive_request.dart';
+import 'package:kh_logistics_internal_demo/models/receive/customer_receive_check_model.dart';
 import 'package:kh_logistics_internal_demo/util/app_color.dart';
 import 'package:qr_code_scanner_plus/qr_code_scanner_plus.dart';
 
-class CustomerReceive extends StatefulWidget {
-  const CustomerReceive({super.key});
+class CustomerReceiveScan extends StatefulWidget {
+  const CustomerReceiveScan({super.key});
 
   @override
   State<StatefulWidget> createState() => _QRViewExampleState();
 }
 
-class _QRViewExampleState extends State<CustomerReceive> {
+class _QRViewExampleState extends State<CustomerReceiveScan> {
   Barcode? result;
   QRViewController? controller;
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
@@ -68,7 +71,12 @@ class _QRViewExampleState extends State<CustomerReceive> {
                     child: CupertinoButton(
                       color: AppColor.baseColors,
                       onPressed: () {
-                        Navigator.pop(context);
+                        Navigator.popUntil(context, (route) => route.isFirst);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const MenuScreen()),
+                        );
                       },
                       child: Text('close'.tr,
                           style: const TextStyle(
@@ -100,15 +108,19 @@ class _QRViewExampleState extends State<CustomerReceive> {
   }
 
   void _onQRViewCreated(QRViewController controller) {
-    setState(() {
-      this.controller = controller;
-    });
+    this.controller = controller;
+
     controller.scannedDataStream.listen((scanData) {
+      if (result != null) return; // prevent multiple scans
+      controller.pauseCamera();
       setState(() {
         result = scanData;
-        log('Scanned Data: ${result!.code}');
-        controller.pauseCamera();
+        log('result is asdf : ${result?.code}');
+        CustomerReceiveRequest()
+            .customerReceiveCheck('${result?.code}', context);
       });
+      // Close / stop camera immediately
+      // or controller.stopCamera();
     });
   }
 

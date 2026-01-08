@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kh_logistics_internal_demo/activity/reports/report_agency_send.dart';
+import 'package:kh_logistics_internal_demo/activity/reports/report_input_data.dart';
 import 'package:kh_logistics_internal_demo/util/app_color.dart';
 
 class Reports extends StatefulWidget {
@@ -26,7 +26,8 @@ class _ReportsState extends State<Reports> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const ReportAgencySend()),
+                      builder: (context) => ReportInputData(
+                          titleAppbar: 'របាយការណ៍កំរៃជើងសារ(ផ្ញើ)', type: 1)),
                 );
               },
               child: Container(
@@ -54,7 +55,14 @@ class _ReportsState extends State<Reports> {
             ),
             const SizedBox(height: 20),
             InkWell(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => ReportInputData(
+                          titleAppbar: 'របាយការណ៍កំរៃជើងសារ(ទទួល)', type: 2)),
+                );
+              },
               child: Container(
                 height: 60,
                 width: double.infinity,
@@ -80,7 +88,15 @@ class _ReportsState extends State<Reports> {
             ),
             const SizedBox(height: 20),
             InkWell(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => ReportInputData(
+                          titleAppbar: 'របាយការណ៍ទូទាត់សម្រាប់(ភ្នាក់ងារ)',
+                          type: 3)),
+                );
+              },
               child: Container(
                 height: 60,
                 width: double.infinity,
